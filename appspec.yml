@@ -1,5 +1,5 @@
 version: 0.0
 os: linux
 files:
-  - source: ./dist
-    destination: /home/ec2-user/serverJar
+  - source: dist
+    destination: /home/ec2-user/clientFiles
