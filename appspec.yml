@@ -1,10 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: dist/DungeonsAndDisasters/
     destination: /var/www/html/
 hooks:
   BeforeInstall:
-    - location: /home/ec2-user/bashScripts/beforeInstall.sh
+    - location: bashScripts/beforeInstall.sh
       timeout: 300
       runas: root
