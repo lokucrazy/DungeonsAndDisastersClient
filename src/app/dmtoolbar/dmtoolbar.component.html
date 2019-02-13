@@ -1,27 +1,31 @@
 <mat-toolbar color = "primary">
     <button mat-button [matMenuTriggerFor]="combatMenu">Combat</button>
     <mat-menu #combatMenu="matMenu">
-      <button mat-menu-item>Start Combat</button>
+      <button mat-menu-item routerLink="/combat">Start Combat</button>
       <button mat-menu-item>End Combat</button>
     </mat-menu>
   
     <button mat-button [matMenuTriggerFor]="notesMenu">Notes</button>
     <mat-menu #notesMenu="matMenu">
-      <button mat-menu-item>Personal Notes</button>
-      <button mat-menu-item>Shared Notes</button>
+      <button mat-menu-item routerLink="/personal-notes">Personal Notes</button>
+      <button mat-menu-item routerLink="/shared-notes">Shared Notes</button>
     </mat-menu>
   
     <button mat-button [matMenuTriggerFor]="mapMenu">Map</button>
     <mat-menu #mapMenu="matMenu">
       <button mat-menu-item>Options</button>
-      <button mat-menu-item>View Map</button>
+      <button mat-menu-item routerLink="/map">View Map</button>
     </mat-menu>
   
     <button mat-button [matMenuTriggerFor]="logMenu">Log</button>
     <mat-menu #logMenu="matMenu">
-      <button mat-menu-item>View Log</button>
+      <button mat-menu-item routerLink="/log">View Log</button>
     </mat-menu>
   
+    <span style="padding-left: 40%; padding-right: 40%">
+
+    </span>
+
     <button mat-button [matMenuTriggerFor]="sessionMenu">Session</button>
     <mat-menu #sessionMenu="matMenu">
       <button mat-menu-item>Session Info placeholder</button>

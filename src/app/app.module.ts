@@ -10,12 +10,24 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { DMToolbarComponent } from './dmtoolbar/dmtoolbar.component';
 import {MatCardModule} from '@angular/material/card';
+import { CombatComponent } from './combat/combat.component';
+import { SharedNotesComponent } from './shared-notes/shared-notes.component';
+import { PersonalNotesComponent } from './personal-notes/personal-notes.component';
+import { MapOptionsComponent } from './map-options/map-options.component';
+import { MapComponent } from './map/map.component';
+import { LogComponent } from './log/log.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DMToolbarComponent
+    DMToolbarComponent,
+    CombatComponent,
+    SharedNotesComponent,
+    PersonalNotesComponent,
+    MapOptionsComponent,
+    MapComponent,
+    LogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +36,7 @@ import {MatCardModule} from '@angular/material/card';
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
