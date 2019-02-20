@@ -1,6 +1,17 @@
 <app-dmtoolbar></app-dmtoolbar>
+    <!-- TODO: FIX THE CONTAINER SIZE IN ORDER TO NOT HARD CODE IN A HEIGHT-->
+    <mat-drawer-container class="containter" autosize style="height:905px;">
+        <mat-drawer #drawer class="sidenav" mode="over">
+            <!-- NEXT TODO, MAKE THE INNARDS OF THE DRAWER-->
+        </mat-drawer>
 
-<div style="height:90%; width:90%; margin-top:2%; margin-bottom:5%; margin-left:5%; margin-right:5%;">
-    <router-outlet></router-outlet>
-</div>
+        <div class="sidenav-content">
+            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 100px; position:absolute; top:45%;"> > </button>
+            <div style="height:90%; width:90%; margin-top:2%; margin-bottom:5%; margin-left:5%; margin-right:5%;">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
 
+    </mat-drawer-container>
+
+        

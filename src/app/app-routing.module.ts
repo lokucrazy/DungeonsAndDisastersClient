@@ -13,7 +13,6 @@ const routes: Routes = [
   {path: 'personal-notes', component: PersonalNotesComponent},
   {path: 'map', component: MapComponent},
   {path: 'log', component: LogComponent},
-  {path: '**', component: AppComponent},
 ];
 
 @NgModule({
