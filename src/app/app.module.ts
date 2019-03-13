@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,7 @@ import { PersonalNotesComponent } from './personal-notes/personal-notes.componen
 import { MapOptionsComponent } from './map-options/map-options.component';
 import { MapComponent } from './map/map.component';
 import { LogComponent } from './log/log.component';
+import { LookupService } from './lookup.service';
 
 
 @NgModule({
@@ -32,6 +35,7 @@ import { LogComponent } from './log/log.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,
@@ -40,7 +44,7 @@ import { LogComponent } from './log/log.component';
     MatCardModule,
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [LookupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
