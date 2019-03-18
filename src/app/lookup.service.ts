@@ -12,6 +12,6 @@ export class LookupService {
     constructor(private http: HttpClient) {}
 
     getSpell() {
-        return this.http.get('ec2-18-232-96-251.compute-1.amazonaws.com:8080/get/spells/1');
+        return this.http.get('http://ec2-18-232-96-251.compute-1.amazonaws.com:8080/get/weapons/quarterstaff');
     }
 }
