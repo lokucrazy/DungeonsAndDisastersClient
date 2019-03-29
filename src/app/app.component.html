@@ -2,7 +2,8 @@
     <!-- TODO: FIX THE CONTAINER SIZE IN ORDER TO NOT HARD CODE IN A HEIGHT-->
     <mat-drawer-container class="container" autosize style="height:905px;">
         <mat-drawer #drawer class="sidenav" mode="over">
-            <a (click)="getSpell()">Get Data</a>
+            <a (click)="getWeapon()">Get Data</a>
+            <div *ngIf="weapon">succ{{weapon.name}}</div>
         </mat-drawer>
 
         <div class="sidenav-content">

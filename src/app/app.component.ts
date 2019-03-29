@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LookupService } from './lookup.service';
 import { Observable, of } from 'rxjs';
+import { Weapon } from './models/Weapon';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,15 @@ import { Observable, of } from 'rxjs';
 export class AppComponent {
   title = 'DungeonsAndDisasters';
 
-  public spell;
+  weapon: Weapon;
 
   constructor(private lookupService: LookupService) { }
 
-  getSpell() {
-    this.lookupService.getSpell().subscribe(
-      data => { this.spell = data; },
+  getWeapon() {
+    this.lookupService.getWeapon().subscribe(
+      data => { this.weapon = data[0]; console.log(data);},
       err => console.error(err),
-      () => console.log('Done getting spell')
+      () => console.log('Done getting Weapon')
     );
   }
 }
