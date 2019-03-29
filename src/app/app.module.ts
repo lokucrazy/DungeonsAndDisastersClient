@@ -20,7 +20,8 @@ import { MapOptionsComponent } from './map-options/map-options.component';
 import { MapComponent } from './map/map.component';
 import { LogComponent } from './log/log.component';
 import { LookupService } from './lookup.service';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { LookupService } from './lookup.service';
     MatToolbarModule,
     MatCardModule,
     MatSidenavModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [LookupService],
   bootstrap: [AppComponent]

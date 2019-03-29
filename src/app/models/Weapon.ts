@@ -1,16 +1,10 @@
 export interface Weapon {
+    id: number;
     name: string;
-    equipment_category: string;
-    weapon_range: string;
-    cost: {
-        quantity:number, 
-        unit: string
-      };
-    damage: {
-      dice_count: number,
-      dice_value: number,
-      damage_type: {
-        name: string
-      }
-    }
+    damage: string;
+    type: string;
+    cost: string;
+    range: string;
+    weight: string;
+    properties: string;
   }
