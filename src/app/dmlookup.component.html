@@ -1,0 +1,58 @@
+<h3>DM Lookup Menu</h3>
+  <mat-form-field>
+      <mat-label>Item Type</mat-label>
+      <mat-select [(value)] = 'selectedType'>
+              <mat-option *ngFor="let searchtypes of searchtypes" [value]="searchtypes.value" #searchValue>
+                  {{searchtypes.viewValue}}
+              </mat-option>
+      </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput type="text" placeholder="Input Name." value="Input Here" #selectionInput>
+  </mat-form-field>
+  <button type="button" mat-raised-button color="accent" (click)="getValues(selectionInput.value); datafunctionSwitcher()">Submit</button>
+
+  <mat-card *ngIf="weapon || spell || armor || race">
+          <mat-card-header>
+          </mat-card-header>
+          <mat-card-content *ngIf="weapon">
+              <p>
+                  <mat-card-title *ngIf="weapon">{{weapon.name | titlecase}}</mat-card-title>
+                  Damage: {{weapon.damage | titlecase}}<br>
+                  Type: {{weapon.type | titlecase}}<br>
+                  Cost: {{weapon.cost | titlecase}}<br>
+                  Range: {{weapon.range | titlecase}}<br>
+                  Weight: {{weapon.weight | titlecase}}<br>
+                  Properties: {{weapon.properties | titlecase}}
+              </p>
+          </mat-card-content>
+          <mat-card-content *ngIf="spell">
+              <p>
+                  <mat-card-title *ngIf="spell">{{spell.name | titlecase}}</mat-card-title>
+                  School: {{spell.school | titlecase}}<br>
+                  Level: {{spell.level | titlecase}}<br>
+                  Class: {{spell.class | titlecase}}<br>
+                  Cast Time: {{spell.castTime | titlecase}}<br>
+                  Range: {{spell.range | titlecase}}<br>
+                  Components: {{spell.components | titlecase}}<br>
+                  Description: {{spell.description | titlecase}}
+              </p>
+          </mat-card-content>
+          <mat-card-content *ngIf="armor">
+              <p>
+                  <mat-card-title *ngIf="armor">{{armor.name | titlecase}}</mat-card-title>
+                  Type: {{armor.type | titlecase}}<br>
+                  Cost: {{armor.cost | titlecase}}<br>
+                  Armor Class: {{armor.armorClass | titlecase}}<br>
+                  Strength: {{armor.strength | titlecase}}<br>
+                  Stealth: {{armor.stealth | titlecase}}<br>
+                  Weight: {{armor.weight | titlecase}}<br>
+              </p>
+          </mat-card-content>
+          <mat-card-content *ngIf="race">
+              <p>
+                  <mat-card-title *ngIf="race">{{race.name | titlecase}}</mat-card-title>
+                  ID: {{race.id}}<br>
+              </p>
+          </mat-card-content>
+  </mat-card>

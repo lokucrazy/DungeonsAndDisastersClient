@@ -22,6 +22,7 @@ import { LogComponent } from './log/log.component';
 import { LookupService } from './lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { DmlookupComponent } from './dmlookup.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
     PersonalNotesComponent,
     MapOptionsComponent,
     MapComponent,
-    LogComponent
+    LogComponent,
+    DmlookupComponent
   ],
   imports: [
     BrowserModule,
