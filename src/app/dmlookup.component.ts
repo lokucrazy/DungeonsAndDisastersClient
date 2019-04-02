@@ -18,6 +18,7 @@ export class DmlookupComponent {
   spell: Spell;
   armor: Armor;
   race: Race;
+  res: string;
   selectedType: string;
   selectedName: string;
 
@@ -49,7 +50,7 @@ export class DmlookupComponent {
   }
 
   getWeapon() {
-    this.lookupService.requestWeapon(this.selectedType, this.selectedName).subscribe(
+    this.lookupService.requestWeapon(this.selectedType, this.selectedName.toLowerCase()).subscribe(
       data => { this.weapon = data[0]; console.log(data); },
       err => console.error(err),
       () => console.log('Done getting Weapon')
@@ -58,7 +59,7 @@ export class DmlookupComponent {
   }
 
   getSpell() {
-    this.lookupService.requestSpell(this.selectedType, this.selectedName).subscribe(
+    this.lookupService.requestSpell(this.selectedType, this.selectedName.toLowerCase()).subscribe(
       data => { this.spell = data[0]; console.log(data); },
       err => console.error(err),
       () => console.log('Done getting Spell')
@@ -67,7 +68,7 @@ export class DmlookupComponent {
   }
 
   getArmor() {
-    this.lookupService.requestArmor(this.selectedType, this.selectedName).subscribe(
+    this.lookupService.requestArmor(this.selectedType, this.selectedName.toLowerCase()).subscribe(
       data => { this.armor = data[0]; console.log(data); },
       err => console.error(err),
       () => console.log('Done getting Armor')
@@ -76,7 +77,7 @@ export class DmlookupComponent {
   }
 
   getRace() {
-    this.lookupService.requestRace(this.selectedType, this.selectedName).subscribe(
+    this.lookupService.requestRace(this.selectedType, this.selectedName.toLowerCase()).subscribe(
       data => { this.race = data[0]; console.log(data); },
       err => console.error(err),
       () => console.log('Done getting Race')
