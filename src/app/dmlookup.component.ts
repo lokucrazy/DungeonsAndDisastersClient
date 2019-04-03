@@ -21,6 +21,10 @@ export class DmlookupComponent {
   res: string;
   selectedType: string;
   selectedName: string;
+  weaponActive: boolean;
+  armorActive: boolean;
+  spellActive: boolean;
+  raceActive: boolean;
 
   searchtypes: SearchType[] = [
     {value: 'spells/', viewValue: 'Spells'},
@@ -38,12 +42,16 @@ export class DmlookupComponent {
   datafunctionSwitcher() {
     if (this.selectedType === 'weapons/') {
       this.getWeapon();
+      this.weaponActive = true;
     } else if (this.selectedType === 'spells/') {
       this.getSpell();
+      this.spellActive = true;
     } else if (this.selectedType === 'armors/') {
       this.getArmor();
+      this.armorActive = true;
     } else if (this.selectedType === 'races/') {
       this.getRace();
+      this.raceActive = true;
     } else {
       console.log('THATS REALLY BAD');
     }
