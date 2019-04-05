@@ -22,7 +22,7 @@ import { LogComponent } from './log/log.component';
 import { LookupService } from './lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { DmlookupComponent } from './dmlookup.component';
+import { DmlookupComponent } from './dmlookup/dmlookup.component';
 
 @NgModule({
   declarations: [
