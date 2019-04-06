@@ -5,6 +5,7 @@ import { SharedNotesComponent } from './shared-notes/shared-notes.component';
 import { PersonalNotesComponent } from './personal-notes/personal-notes.component';
 import { MapComponent } from './map/map.component';
 import { LogComponent } from './log/log.component';
+import { ChatComponent } from './chat/chat.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'personal-notes', component: PersonalNotesComponent},
   {path: 'map', component: MapComponent},
   {path: 'log', component: LogComponent},
+  {path: 'chat', component: ChatComponent},
 ];
 
 @NgModule({
