@@ -6,7 +6,7 @@ import { Spell } from './models/Spell';
 import { Armor } from './models/Armor';
 import { Race } from './models/Race';
 import { SearchType } from './models/SearchType';
-import { LoginComponent } from './login/login';
+import { LoginComponent, LoginDialogComponent } from './dmtoolbar/dmtoolbar.component';
 
 @Component({
   selector: 'app-root',

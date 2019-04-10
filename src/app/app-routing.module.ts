@@ -6,15 +6,13 @@ import { PersonalNotesComponent } from './personal-notes/personal-notes.componen
 import { MapComponent } from './map/map.component';
 import { LogComponent } from './log/log.component';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login';
 
 const routes: Routes = [
   {path: 'combat', component: CombatComponent},
   {path: 'shared-notes', component: SharedNotesComponent},
   {path: 'personal-notes', component: PersonalNotesComponent},
   {path: 'map', component: MapComponent},
-  {path: 'log', component: LogComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'log', component: LogComponent}
 ];
 
 @NgModule({

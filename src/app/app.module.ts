@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { DMToolbarComponent } from './dmtoolbar/dmtoolbar.component';
+import { DMToolbarComponent, LoginComponent, LoginDialogComponent } from './dmtoolbar/dmtoolbar.component';
 import { MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CombatComponent } from './combat/combat.component';
@@ -23,7 +23,6 @@ import { LookupService } from './lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { DmlookupComponent } from './dmlookup/dmlookup.component';
-import { LoginComponent, LoginDialogComponent } from './login/login';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 
