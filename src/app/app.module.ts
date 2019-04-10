@@ -23,6 +23,9 @@ import { LookupService } from './lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { DmlookupComponent } from './dmlookup/dmlookup.component';
+import { LoginComponent, LoginDialogComponent } from './login/login';
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { DmlookupComponent } from './dmlookup/dmlookup.component';
     MapOptionsComponent,
     MapComponent,
     LogComponent,
-    DmlookupComponent
+    DmlookupComponent,
+    LoginComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +52,12 @@ import { DmlookupComponent } from './dmlookup/dmlookup.component';
     MatCardModule,
     MatSidenavModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [LookupService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginDialogComponent]
 })
 export class AppModule { }
