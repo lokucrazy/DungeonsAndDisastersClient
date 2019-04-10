@@ -2,18 +2,18 @@
 <div mat-dialog-content>
   <p>Username:</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.username">
+    <input matInput type="text" value="" #inputUsername>
   </mat-form-field>
   <p>Password:</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.password">
+    <input matInput type="password" #inputPassword>
   </mat-form-field>
-  <p>Birthday</p>
+  <p>Birthday:</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.birthday">
+    <input matInput type="date" #inputBirthday>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial>Submit</button>
+  <button mat-button (click)="submit(inputUsername.value, inputPassword.value, inputBirthday.value)" cdkFocusInitial>Submit</button>
   <button mat-button (click)="onNoClick()">Cancel</button>
 </div>

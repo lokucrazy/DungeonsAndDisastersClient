@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions } from '@angular/material';
 import { AppComponent } from '../app.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateuserService } from '../createuser.service';
+import { User } from '../models/User';
 
 
 
@@ -57,11 +59,23 @@ export class LoginComponent {
 })
 export class LoginDialogComponent {
 
+  newUser: User;
+
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
+      private createuserService: CreateuserService,
       @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
       public onNoClick(): void {
           this.dialogRef.close();
       }
+
+      public submit(x, y, z): void {
+        this.newUser.username = x;
+        this.newUser.password = y;
+        this.newUser.birthday = z;
+        this.createuserService.createUser(this.newUser).subscribe();
+      }
+
+
 }
