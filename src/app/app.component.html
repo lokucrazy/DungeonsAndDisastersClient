@@ -1,11 +1,5 @@
 <app-dmtoolbar></app-dmtoolbar>
-    <!-- TODO: FIX THE CONTAINER SIZE IN ORDER TO NOT HARD CODE IN A HEIGHT
-                Add error messages for bad http requests
-                Ask ryan about Races (they currently dont work)
-                Ask ryan about spells and how to handle spaces in the input
-                Maybe a way to clear cards in the lookup drawer? (Not necessary for an MVP)
-                Probably need to move the lookup into its own component, though that seems scary-->
-    <mat-drawer-container class="container" autosize style="height: 94vh;">
+    <mat-drawer-container class="container" autosize="false" style="height: 94vh;">
         <mat-drawer #drawer class="sidenav" mode="over">
             <app-dmlookup></app-dmlookup>
         </mat-drawer>
