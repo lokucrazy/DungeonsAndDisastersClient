@@ -12,14 +12,14 @@ const httpOptions = {
 })
 export class CreateuserService {
 
-  link = 'http://ec2-18-232-96-251.compute-1.amazonaws.com:8080/post/';
+  link = 'http://ec2-54-89-116-106.compute-1.amazonaws.com:8080/api/v1/';
   request: string;
 
   constructor(private http: HttpClient) { }
 
   createUser(user: User): Observable <User[]> {
     console.log(user);
-    this.request = this.link.concat(user.username);
-    return this.http.post<User[]>(this.request, httpOptions);
+    // this.request = this.link.concat(user.username);
+    return this.http.post<User[]>(this.link, user, httpOptions);
   }
 }

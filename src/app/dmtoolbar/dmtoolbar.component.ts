@@ -65,8 +65,18 @@ export class LoginDialogComponent {
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
       private createuserService: CreateuserService,
-      @Inject(MAT_DIALOG_DATA) public data: DialogData) 
-      { this.newUser = { username : null, password : null, birthday: null}; }
+      @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+        this.newUser = {
+          id: null,
+          username : null,
+          password : null,
+          birthday: null,
+          notes: null,
+          created_at: null,
+          modified_at: null,
+          characters: null,
+          sessions: null};
+      }
 
       public onNoClick(): void {
           this.dialogRef.close();
