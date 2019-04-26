@@ -4,7 +4,8 @@ import { Observable , of } from 'rxjs';
 import { User } from './models/User';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  body: 'UserRequest'
 };
 
 @Injectable({
@@ -12,7 +13,7 @@ const httpOptions = {
 })
 export class CreateuserService {
 
-  link = 'http://ec2-54-89-116-106.compute-1.amazonaws.com:8080/api/v1/';
+  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com:8080/api/v1/users/';
   request: string;
 
   constructor(private http: HttpClient) { }

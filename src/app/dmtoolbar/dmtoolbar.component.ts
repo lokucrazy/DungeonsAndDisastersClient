@@ -86,7 +86,7 @@ export class LoginDialogComponent {
         this.newUser.username = username;
         this.newUser.password = password;
         this.newUser.birthday = birthday;
-        console.log(username, password, birthday)
+        console.log(username, password, birthday);
         this.createuserService.createUser(this.newUser).subscribe();
       }
 
