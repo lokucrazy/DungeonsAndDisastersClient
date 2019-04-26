@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable , of } from 'rxjs';
+import { Observable , throwError } from 'rxjs';
 import { User } from './models/User';
+import { catchError } from 'rxjs/operators';
+import { stringify } from '@angular/core/src/render3/util';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  body: 'UserRequest'
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -13,7 +14,7 @@ const httpOptions = {
 })
 export class CreateuserService {
 
-  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com:8080/api/v1/users/';
+  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/users';
   request: string;
 
   constructor(private http: HttpClient) { }

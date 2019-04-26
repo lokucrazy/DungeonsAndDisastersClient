@@ -70,7 +70,7 @@ export class LoginDialogComponent {
           id: null,
           username : null,
           password : null,
-          birthday: null,
+          birthdate: null,
           notes: null,
           created_at: null,
           modified_at: null,
@@ -82,11 +82,11 @@ export class LoginDialogComponent {
           this.dialogRef.close();
       }
 
-      public submit(username, password, birthday): void {
+      public submit(username, password, birthdate): void {
         this.newUser.username = username;
         this.newUser.password = password;
-        this.newUser.birthday = birthday;
-        console.log(username, password, birthday);
+        this.newUser.birthdate = birthdate;
+        console.log(username, password, birthdate);
         this.createuserService.createUser(this.newUser).subscribe();
       }
 

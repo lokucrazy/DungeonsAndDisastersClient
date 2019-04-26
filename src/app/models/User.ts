@@ -2,7 +2,7 @@ export interface User {
     id: string;
     username: string;
     password: string;
-    birthday: Date;
+    birthdate: Date;
     notes: string;
     created_at: Date;
     modified_at: Date;
