@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Create User</h1>
+<h1 mat-dialog-title *ngIf="!login">Create User</h1>
+<h1 mat-dialog-title *ngIf="login">Login</h1>
 <div mat-dialog-content>
   <p>Username:</p>
   <mat-form-field>
@@ -8,12 +9,16 @@
   <mat-form-field>
     <input matInput type="password" #inputPassword>
   </mat-form-field>
-  <p>Birthday:</p>
-  <mat-form-field>
+  <p *ngIf="!login">Birthday:</p>
+  <mat-form-field *ngIf="!login">
     <input matInput type="date" #inputBirthday>
   </mat-form-field>
+  <br>
+  <a (click)="login = true;" *ngIf="!login">Or login Instead</a>
+  <a (click)="login = false;" *ngIf="login">Or Create User Instead</a>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="submit(inputUsername.value, inputPassword.value, inputBirthday.value)" cdkFocusInitial>Submit</button>
+  <button mat-button (click)="loginsubmit(inputUsername.value, inputPassword.value)" cdkFocusInitial *ngIf="login">Login</button>
+  <button mat-button (click)="submit(inputUsername.value, inputPassword.value, inputBirthday.value)" cdkFocusInitial *ngIf="!login">Submit</button>
   <button mat-button (click)="onNoClick()">Cancel</button>
 </div>

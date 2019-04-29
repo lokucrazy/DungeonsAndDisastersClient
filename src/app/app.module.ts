@@ -19,7 +19,7 @@ import { PersonalNotesComponent } from './personal-notes/personal-notes.componen
 import { MapOptionsComponent } from './map-options/map-options.component';
 import { MapComponent } from './map/map.component';
 import { LogComponent } from './log/log.component';
-import { LookupService } from './lookup.service';
+import { LookupService } from './services/lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { DmlookupComponent } from './dmlookup/dmlookup.component';
