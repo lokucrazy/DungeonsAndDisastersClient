@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DmlookupComponent } from './dmlookup/dmlookup.component';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import { MatDialogModule } from '@angular/material';
     MatDialogModule,
     FormsModule
   ],
-  providers: [LookupService],
+  providers: [
+    LookupService,
+    LoginService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [LoginDialogComponent]
 })

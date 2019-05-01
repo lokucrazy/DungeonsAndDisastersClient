@@ -26,7 +26,10 @@
 
     <button mat-button [matMenuTriggerFor]="sessionMenu" style="position:absolute; right:0px;">Session</button>
     <mat-menu #sessionMenu="matMenu">
-      <button mat-menu-item>Session Info placeholder</button>
+      <button mat-menu-item *ngIf="currentUser">
+        Username: {{currentUser.username}}<br>
+        ID: {{currentUser.identifier}}
+      </button>
       <app-login></app-login>
       <button mat-menu-item>Create New Session</button>
       <button mat-menu-item>Save Session</button>
@@ -34,5 +37,6 @@
       <button mat-menu-item>End Session</button>
       <button mat-menu-item>Invite Player</button>
       <button mat-menu-item>Kick Player</button>
+      <button mat-menu-item (click) = "logout()">Logout</button>
     </mat-menu>
   </mat-toolbar>

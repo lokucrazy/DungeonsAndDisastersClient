@@ -21,11 +21,22 @@ export interface DialogData {
 })
 export class DMToolbarComponent implements OnInit {
 
-  constructor() {}
+  currentUser: User;
+
+  constructor(private loginService: LoginService) {}
 
   ngOnInit() {
+    this.getDropDownInfo();
   }
 
+
+  public getDropDownInfo(): void {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  public logout(): void {
+    localStorage.removeItem('currentUser');
+  }
 }
 
 
@@ -63,14 +74,13 @@ export class LoginDialogComponent {
   newUser: User;
   login: boolean;
 
-
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
       private createuserService: CreateuserService,
       private loginService: LoginService,
       @Inject(MAT_DIALOG_DATA) public data: DialogData) {
         this.newUser = {
-          id: null,
+          identifier: null,
           username : null,
           password : null,
           birthdate: null,
@@ -96,8 +106,7 @@ export class LoginDialogComponent {
 
       public loginsubmit(username, password): void {
         this.newUser.username = username;
-        this.newUser.username = password;
-        this.loginService.loginrequest(this.newUser).subscribe();
+        this.newUser.password = password;
+        this.loginService.loginrequest(this.newUser);
       }
-
 }
