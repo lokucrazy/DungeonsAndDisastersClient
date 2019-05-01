@@ -26,6 +26,9 @@ import { DmlookupComponent } from './dmlookup/dmlookup.component';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { LoginService } from './services/login.service';
+import { FetchUserInfoComponent, FetchUserInfoSnackComponent } from './fetch-user-info/fetch-user-info.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { LoginService } from './services/login.service';
     LogComponent,
     DmlookupComponent,
     LoginComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    FetchUserInfoComponent,
+    FetchUserInfoSnackComponent
   ],
   imports: [
     BrowserModule,
@@ -54,13 +59,14 @@ import { LoginService } from './services/login.service';
     MatSelectModule,
     MatInputModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [
     LookupService,
     LoginService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialogComponent]
+  entryComponents: [LoginDialogComponent, FetchUserInfoSnackComponent]
 })
 export class AppModule { }
