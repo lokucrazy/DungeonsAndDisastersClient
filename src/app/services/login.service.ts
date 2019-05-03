@@ -17,6 +17,7 @@ export class LoginService implements OnInit {
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/users';
   users: User[];
   foundUser: User;
+  found = false;
 
   constructor(private http: HttpClient) { }
 
@@ -37,12 +38,10 @@ export class LoginService implements OnInit {
           console.log(i);
           this.foundUser = i;
           localStorage.setItem('currentUser', JSON.stringify(this.foundUser));
+          this.found = true;
         }
       }
     });
-  }
-
-  getLoggedIn() {
-    return this.foundUser;
+    return this.found;
   }
 }

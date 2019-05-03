@@ -36,6 +36,7 @@ export class DMToolbarComponent implements OnInit {
 
   public logout(): void {
     localStorage.removeItem('currentUser');
+    this.currentUser = null;
   }
 }
 
@@ -89,7 +90,6 @@ export class LoginDialogComponent {
           modified_at: null,
           characters: null,
           sessions: null};
-        this.login = false;
       }
 
       public onNoClick(): void {
@@ -101,14 +101,21 @@ export class LoginDialogComponent {
         this.newUser.password = password;
         this.newUser.birthdate = birthdate;
         console.log(username, password, birthdate);
-        this.createuserService.createUser(this.newUser).subscribe();
+        this.createuserService.createUser(this.newUser).subscribe(
+          err => console.log(err)
+        );
         this.dialogRef.close();
       }
 
       public loginsubmit(username, password): void {
         this.newUser.username = username;
         this.newUser.password = password;
-        this.loginService.loginrequest(this.newUser);
+        this.login = this.loginService.loginrequest(this.newUser);
+        if (this.login) {
+          console.log('Login Successful');
+        } else {
+          console.log('Login failed.');
+        }
         this.dialogRef.close();
       }
 }

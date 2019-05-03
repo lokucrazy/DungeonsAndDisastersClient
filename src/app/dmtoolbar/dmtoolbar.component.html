@@ -1,4 +1,5 @@
 <mat-toolbar color = "primary">
+    <button mat-button routerLink="/">Home</button>
     <button mat-button [matMenuTriggerFor]="combatMenu">Combat</button>
     <mat-menu #combatMenu="matMenu">
       <button mat-menu-item routerLink="/combat">Start Combat</button>
@@ -26,7 +27,7 @@
 
     <button mat-button [matMenuTriggerFor]="sessionMenu" style="position:absolute; right:0px;">Session</button>
     <mat-menu #sessionMenu="matMenu">
-      <app-login></app-login>
+      <app-login *ngIf="!currentUser"></app-login>
       <app-fetch-user-info *ngIf="currentUser"></app-fetch-user-info>
       <button mat-menu-item>Create New Session</button>
       <button mat-menu-item>Save Session</button>
