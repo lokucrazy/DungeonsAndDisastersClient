@@ -28,6 +28,7 @@ import { MatDialogModule } from '@angular/material';
 import { LoginService } from './services/login.service';
 import { FetchUserInfoComponent, FetchUserInfoSnackComponent } from './fetch-user-info/fetch-user-info.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GetuserService } from './services/getuser.service';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   providers: [
     LookupService,
-    LoginService
+    LoginService,
+    GetuserService
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginDialogComponent, FetchUserInfoSnackComponent]

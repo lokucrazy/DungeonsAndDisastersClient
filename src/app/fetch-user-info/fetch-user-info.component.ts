@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { User } from '../models/User';
 
 @Component({
   selector: 'app-fetch-user-info',
