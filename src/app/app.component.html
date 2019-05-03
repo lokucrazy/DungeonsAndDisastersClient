@@ -4,7 +4,9 @@
             <app-dmlookup></app-dmlookup>
         </mat-drawer>
         <div class="sidenav-content">
-            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 100px; position:absolute; top:40%;"> > </button>
+            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 100px; position:absolute; top:40%;">
+                <i class="material-icons">chevron_right</i>
+            </button>
             <div style="height:90%; width:90%; margin-top:2%; margin-bottom:5%; margin-left:5%; margin-right:5%;">
                 <router-outlet></router-outlet>
             </div>

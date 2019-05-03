@@ -1,13 +1,14 @@
-<h3>DM Lookup Menu</h3>
-  <mat-form-field>
-      <mat-label>Item Type</mat-label>
+<mat-card-title>DM Lookup Menu</mat-card-title>
+<br>
+  <mat-form-field style="padding: 10px 10px 10px 10px;">
+      <mat-label>Search Type</mat-label>
       <mat-select [(value)] = 'selectedType'>
               <mat-option *ngFor="let searchtypes of searchtypes" [value]="searchtypes.value" #searchValue>
                   {{searchtypes.viewValue}}
               </mat-option>
       </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field style="padding: 10px 10px 10px 10px;">
       <input matInput type="text" placeholder="Input Name." value="Input Here" #selectionInput>
   </mat-form-field>
   <button type="button" mat-raised-button color="accent" (click)="getValues(selectionInput.value); datafunctionSwitcher()">Submit</button>

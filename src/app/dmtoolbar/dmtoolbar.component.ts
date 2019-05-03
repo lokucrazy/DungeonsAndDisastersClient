@@ -102,11 +102,13 @@ export class LoginDialogComponent {
         this.newUser.birthdate = birthdate;
         console.log(username, password, birthdate);
         this.createuserService.createUser(this.newUser).subscribe();
+        this.dialogRef.close();
       }
 
       public loginsubmit(username, password): void {
         this.newUser.username = username;
         this.newUser.password = password;
         this.loginService.loginrequest(this.newUser);
+        this.dialogRef.close();
       }
 }
