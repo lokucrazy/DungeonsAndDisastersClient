@@ -29,6 +29,8 @@ import { LoginService } from './services/login.service';
 import { FetchUserInfoComponent, FetchUserInfoSnackComponent } from './fetch-user-info/fetch-user-info.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GetuserService } from './services/getuser.service';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { BottomsheetComponent, BottomSheetBoxComponent } from './bottomsheet/bottomsheet.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { GetuserService } from './services/getuser.service';
     LoginComponent,
     LoginDialogComponent,
     FetchUserInfoComponent,
-    FetchUserInfoSnackComponent
+    FetchUserInfoSnackComponent,
+    BottomsheetComponent,
+    BottomSheetBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import { GetuserService } from './services/getuser.service';
     MatInputModule,
     MatDialogModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBottomSheetModule
   ],
   providers: [
     LookupService,
@@ -69,6 +74,6 @@ import { GetuserService } from './services/getuser.service';
     GetuserService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialogComponent, FetchUserInfoSnackComponent]
+  entryComponents: [LoginDialogComponent, FetchUserInfoSnackComponent, BottomSheetBoxComponent]
 })
 export class AppModule { }
