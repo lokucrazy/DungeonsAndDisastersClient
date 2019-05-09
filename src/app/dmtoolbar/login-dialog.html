@@ -18,7 +18,12 @@
   <a mat-button color="warn" (click)="login = true;" *ngIf="!login">Or, Create User Instead</a>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button (click)="loginsubmit(inputUsername.value, inputPassword.value)" cdkFocusInitial *ngIf="!login">Login</button>
+
+  <button mat-raised-button (click)="fakelogin()" cdkFocusInitial *ngIf="!login">Fake Login</button>
+  <!-- THIS IS FOR DEV, it replaces the loginsubmit button if a user is needed
+     <button mat-raised-button (click)="loginsubmit(inputUsername.value, inputPassword.value)" cdkFocusInitial *ngIf="!login">Login</button>
+  -->
+
   <button mat-raised-button (click)="submit(inputUsername.value, inputPassword.value, inputBirthday.value)" cdkFocusInitial *ngIf="login">Submit</button>
   <button mat-raised-button (click)="onNoClick()">Cancel</button>
 </div>

@@ -31,6 +31,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GetuserService } from './services/getuser.service';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BottomsheetComponent, BottomSheetBoxComponent } from './bottomsheet/bottomsheet.component';
+import { DisplaySessionsComponent } from './display-sessions/display-sessions.component';
+import { CreateSessionComponent } from './create-session/create-session.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+
+
 
 
 @NgModule({
@@ -49,7 +56,9 @@ import { BottomsheetComponent, BottomSheetBoxComponent } from './bottomsheet/bot
     FetchUserInfoComponent,
     FetchUserInfoSnackComponent,
     BottomsheetComponent,
-    BottomSheetBoxComponent
+    BottomSheetBoxComponent,
+    DisplaySessionsComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +75,10 @@ import { BottomsheetComponent, BottomSheetBoxComponent } from './bottomsheet/bot
     MatDialogModule,
     FormsModule,
     MatSnackBarModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatListModule,
+    MatDividerModule,
+    MatRadioModule
   ],
   providers: [
     LookupService,

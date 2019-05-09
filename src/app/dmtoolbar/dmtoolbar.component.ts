@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateuserService } from '../services/createuser.service';
 import { User } from '../models/User';
 import { LoginService } from '../services/login.service';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 
 
 
@@ -74,6 +75,7 @@ export class LoginDialogComponent {
 
   newUser: User;
   login: boolean;
+  fakeUser: User;
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
@@ -81,6 +83,16 @@ export class LoginDialogComponent {
       private loginService: LoginService,
       @Inject(MAT_DIALOG_DATA) public data: DialogData) {
         this.newUser = {
+          identifier: null,
+          username : null,
+          password : null,
+          birthdate: null,
+          notes: null,
+          created_at: null,
+          modified_at: null,
+          characters: null,
+          sessions: null};
+        this.fakeUser = {
           identifier: null,
           username : null,
           password : null,
@@ -117,5 +129,13 @@ export class LoginDialogComponent {
           console.log('Login failed.');
         }
         this.dialogRef.close();
+      }
+
+      public fakelogin(): void {
+        this.fakeUser.username = 'will';
+        this.fakeUser.password = 'pass';
+        this.fakeUser.identifier = '69';
+        this.fakeUser.sessions = ['session1', 'session2', 'session3' ];
+        localStorage.setItem('currentUser', JSON.stringify(this.fakeUser));
       }
 }

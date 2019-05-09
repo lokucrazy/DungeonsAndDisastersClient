@@ -1,0 +1,10 @@
+<h1>Current Sessions</h1>
+<mat-list *ngIf="sessionflag">
+  <mat-list-item *ngFor="let session of sessions">
+    Session Id: {{session.identifier}}
+    Date Made: {{session.created_at}}
+    Session DM: {{session.dm_id}}
+    <!-- SESSION ACTIVE STATUS -->
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
