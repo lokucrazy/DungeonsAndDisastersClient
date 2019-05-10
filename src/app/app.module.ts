@@ -23,6 +23,7 @@ import { LookupService } from './lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { DmlookupComponent } from './dmlookup/dmlookup.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DmlookupComponent } from './dmlookup/dmlookup.component';
     MapOptionsComponent,
     MapComponent,
     LogComponent,
-    DmlookupComponent
+    DmlookupComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
