@@ -2,8 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/User';
 import { LoginService } from './services/login.service';
-import { Component } from '@angular/core';
-import { LookupService } from './lookup.service';
+import { LookupService } from './services/lookup.service';
 import { Observable, of } from 'rxjs';
 import { Weapon } from './models/Weapon';
 import { Spell } from './models/Spell';

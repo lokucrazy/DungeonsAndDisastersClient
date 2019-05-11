@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'map', component: MapComponent},
   {path: 'log', component: LogComponent},
   {path: 'display-sessions', component: DisplaySessionsComponent},
-  {path: 'create-session', component: CreateSessionComponent}
+  {path: 'create-session', component: CreateSessionComponent},
   {path: 'chat', component: ChatComponent},
 
 ];

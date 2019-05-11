@@ -56,7 +56,7 @@ import { ChatComponent } from './chat/chat.component';
     BottomsheetComponent,
     BottomSheetBoxComponent,
     DisplaySessionsComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
     ChatComponent
 
   ],
