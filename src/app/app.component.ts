@@ -12,6 +12,9 @@ import { SearchType } from './models/SearchType';
 import { Button } from 'protractor';
 import { style } from '@angular/animations';
 import { AstMemoryEfficientTransformer } from '@angular/compiler';
+import { GetuserService } from './services/getuser.service';
+import { userInfo } from 'os';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 @Component({
@@ -21,7 +24,7 @@ import { AstMemoryEfficientTransformer } from '@angular/compiler';
 })
 export class AppComponent implements OnInit {
   title = 'DungeonsAndDisasters';
-  currentUser: User;
+  public currentUser: User;
 
   constructor(private loginService: LoginService) {}
 
@@ -37,4 +40,9 @@ export class AppComponent implements OnInit {
     document.getElementById("myForm").style.display = "none";
   }
 
-}
+  message:string;
+  sendMsg(message:string) {
+      this.message = message;
+    }
+  }
+

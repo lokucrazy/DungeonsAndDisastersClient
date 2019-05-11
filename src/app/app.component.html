@@ -20,14 +20,22 @@
         <button class="open-button" (click)="openForm()">Chat</button>
 
         <div class="chat-popup" id="myForm">
-        <form action="" class="form-container">
-            <h1>Chat</h1>
-        
-            <textarea placeholder="Type message.." name="msg" required></textarea>
-        
-            <button type="submit" class="btn">Send</button>
-            <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
-        </form>
+
+            <form class="form-container">
+                <h1>Chat</h1>
+                
+                
+                <textarea type="text" id="chat-show" [readonly]="true">{{message.value}}
+                </textarea>
+                
+
+                <br><br>
+            
+                <input type="text" id="chat" #message>
+            
+                <button type="submit" class="btn" (click)="sendMsg(message.value)">Send</button>
+                <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+            </form>
         </div>
 
     </mat-drawer-container>
