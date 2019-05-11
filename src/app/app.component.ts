@@ -15,6 +15,7 @@ import { AstMemoryEfficientTransformer } from '@angular/compiler';
 import { GetuserService } from './services/getuser.service';
 import { userInfo } from 'os';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { MESSAGES_CONTAINER_ID } from '@angular/cdk/a11y';
 
 
 @Component({
@@ -24,7 +25,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class AppComponent implements OnInit {
   title = 'DungeonsAndDisasters';
-  public currentUser: User;
+  currentUser: User;
 
   constructor(private loginService: LoginService) {}
 
@@ -40,9 +41,9 @@ export class AppComponent implements OnInit {
     document.getElementById("myForm").style.display = "none";
   }
 
-  message:string;
   sendMsg(message:string) {
-      this.message = message;
-    }
+    document.getElementById("chat-show").textContent = this.currentUser + ": " + message;
   }
+  
+}
 
