@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   i:number = 0;
   sendMsg(message:string) {
     this.messages[this.i] = message;
-    document.getElementById("chat-show").textContent = this.messages[this.i];
+    document.getElementById("chat").textContent = this.messages[this.i];
     this.i++;
   }
   

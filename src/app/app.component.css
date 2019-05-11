@@ -29,7 +29,7 @@
   background-color: rgb(53, 52, 52);
 }
 
-/* Full-width textarea */
+/* Full-width textarea
 .form-container textarea {
   width: 290px;
   padding: 5px;
@@ -37,7 +37,7 @@
   background: #f1f1f1;
   resize: none;
   min-height: 100px;
-}
+} */
 
 /* Full-width textarea */
 .form-container input {
@@ -49,11 +49,11 @@
   min-height: 100px;
 }
 
-/* When the textarea gets focus, do something */
+/* When the textarea gets focus, do something
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
-}
+} */
 
 /* When the textarea gets focus, do something */
 .form-container input:focus {
