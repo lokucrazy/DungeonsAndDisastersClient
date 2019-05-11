@@ -1,29 +1,34 @@
 <app-dmtoolbar></app-dmtoolbar>
-    <mat-drawer-container class="container" autosize="false" style="height: 94vh;">
+    <mat-drawer-container class="container" autosize style="height: 93.15vh;">
         <mat-drawer #drawer class="sidenav" mode="over">
             <app-dmlookup></app-dmlookup>
         </mat-drawer>
         <div class="sidenav-content">
-            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 100px; position:absolute; top:40%;"> > </button>
+            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 80px; position:absolute; top:40%;">
+                <i class="material-icons">chevron_right</i>
+            </button>
             <div style="height:90%; width:90%; margin-top:2%; margin-bottom:5%; margin-left:5%; margin-right:5%;">
                 <router-outlet></router-outlet>
             </div>
         </div>
 
+        <app-bottomsheet></app-bottomsheet>
+
+
         <!-- Button for the Chat. Opens up the log and has a Send and Close button.
              The Chat button is fixed on the bottom right of the screen so it moves along with the rest of the browser for easier navigation-->
-        <button class="open-button" (click)="openForm()">Chat</button>
+        <!-- <button class="open-button" (click)="openForm()">Chat</button>
 
         <div class="chat-popup" id="myForm">
         <form action="" class="form-container">
             <h1>Chat</h1>
-        
+
             <textarea placeholder="Type message.." name="msg" required></textarea>
-        
+
             <button type="submit" class="btn">Send</button>
             <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
         </form>
-        </div>
+        </div> -->
 
     </mat-drawer-container>
 
