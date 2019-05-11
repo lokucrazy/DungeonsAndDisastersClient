@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetuserService } from '../services/getuser.service';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Messenger } from '../models/Messenger';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,6 +15,10 @@ const httpOptions = {
 })
 export class PersonalNotesComponent implements OnInit {
   user: User;
+  turbolink: string;
+  notes: string[];
+  message: Messenger = {body: ''};
+
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/users/';
 
   constructor(private getuserservice: GetuserService,
@@ -21,11 +26,24 @@ export class PersonalNotesComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.getuserservice.getUser();
+    this.turbolink = this.link.concat(this.user.identifier.concat('/notes'));
+    this.http.get<string[]>(this.turbolink, httpOptions)
+    .subscribe(data => {
+      this.notes = data;
+      this.notes.reverse();
+    });
   }
 
-  save(notes) {
-    this.user.notes = notes;
-    localStorage.setItem('currentUser', JSON.stringify(this.user));
-    this.http.put(this.link, this.user.identifier, httpOptions);
+  public save(newNote: string) {
+    this.message.body = newNote;
+    this.http.post<User>(this.turbolink, this.message, httpOptions)
+      .subscribe(
+        data => {
+          this.user = data;
+          localStorage.setItem('currentUser', JSON.stringify(this.user));
+          this.notes = this.user.notes;
+          this.notes.reverse();
+      }
+    );
   }
 }

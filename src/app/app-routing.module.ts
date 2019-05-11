@@ -14,13 +14,12 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   {path: 'combat', component: CombatComponent},
   {path: 'shared-notes', component: SharedNotesComponent},
-  {path: 'personal-notes', component: PersonalNotesComponent},
+  {path: 'personal-notes', component: PersonalNotesComponent, runGuardsAndResolvers: 'always'},
   {path: 'map', component: MapComponent},
   {path: 'log', component: LogComponent},
   {path: 'display-sessions', component: DisplaySessionsComponent},
-  {path: 'create-session', component: CreateSessionComponent}
+  {path: 'create-session', component: CreateSessionComponent},
   {path: 'chat', component: ChatComponent},
-
 ];
 
 @NgModule({

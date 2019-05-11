@@ -90,18 +90,11 @@ export class LoginDialogComponent {
           notes: null,
           created_at: null,
           modified_at: null,
-          characters: null,
-          sessions: null};
-        this.fakeUser = {
-          identifier: null,
-          username : null,
-          password : null,
-          birthdate: null,
-          notes: null,
-          created_at: null,
-          modified_at: null,
-          characters: null,
-          sessions: null};
+          character_ids: null,
+          session_ids: null,
+          dm_session_ids: null,
+          npc_ids: null
+        }
       }
 
       public onNoClick(): void {
@@ -122,20 +115,10 @@ export class LoginDialogComponent {
       public loginsubmit(username, password): void {
         this.newUser.username = username;
         this.newUser.password = password;
-        this.login = this.loginService.loginrequest(this.newUser);
-        if (this.login) {
-          console.log('Login Successful');
-        } else {
-          console.log('Login failed.');
-        }
+        this.loginService.loginrequest(this.newUser).subscribe(
+          data => localStorage.setItem('currentUser', JSON.stringify(data)),
+          err => console.log(err)
+        );
         this.dialogRef.close();
-      }
-
-      public fakelogin(): void {
-        this.fakeUser.username = 'will';
-        this.fakeUser.password = 'pass';
-        this.fakeUser.identifier = '69';
-        this.fakeUser.sessions = ['session1', 'session2', 'session3' ];
-        localStorage.setItem('currentUser', JSON.stringify(this.fakeUser));
       }
 }
