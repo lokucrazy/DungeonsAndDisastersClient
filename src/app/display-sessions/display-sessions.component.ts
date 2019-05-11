@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetuserService } from '../services/getuser.service';
-import { User } from '../models/user';
+import { User } from '../models/User';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetsessionsService } from '../services/getsessions.service';
 import { Session } from '../models/Session';
