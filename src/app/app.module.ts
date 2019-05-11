@@ -36,9 +36,7 @@ import { CreateSessionComponent } from './create-session/create-session.componen
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
-
-
-
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +57,8 @@ import { MatRadioModule } from '@angular/material/radio';
     BottomSheetBoxComponent,
     DisplaySessionsComponent,
     CreateSessionComponent
+    ChatComponent
+
   ],
   imports: [
     BrowserModule,

@@ -24,16 +24,18 @@
     "core-js": "^2.5.4",
     "material-design-icons": "^3.0.1",
     "material-letter-icons": "^1.0.8",
+    "ng-chat": "^2.0.1",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
-    "@angular/cli": "^7.3.8",
-    "@angular/compiler-cli": "^7.2.14",
-    "@angular/language-service": "^7.2.14",
+
+    "@angular-devkit/build-angular": "^0.13.9",
+    "@angular/cli": "^7.3.9",
+    "@angular/compiler-cli": "^7.2.9",
+    "@angular/language-service": "~7.2.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
