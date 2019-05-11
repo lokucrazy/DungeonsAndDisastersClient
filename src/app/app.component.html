@@ -1,20 +1,19 @@
 <app-dmtoolbar></app-dmtoolbar>
-    <!-- TODO: FIX THE CONTAINER SIZE IN ORDER TO NOT HARD CODE IN A HEIGHT
-                Add error messages for bad http requests
-                Ask ryan about Races (they currently dont work)
-                Ask ryan about spells and how to handle spaces in the input
-                Maybe a way to clear cards in the lookup drawer? (Not necessary for an MVP)
-                Probably need to move the lookup into its own component, though that seems scary-->
-    <mat-drawer-container class="container" autosize style="height: 94vh;">
+    <mat-drawer-container class="container" autosize style="height: 93.15vh;">
         <mat-drawer #drawer class="sidenav" mode="over">
             <app-dmlookup></app-dmlookup>
         </mat-drawer>
         <div class="sidenav-content">
-            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 100px; position:absolute; top:40%;"> > </button>
+            <button type="button" mat-raised-button color="accent" (click)="drawer.toggle()" style="height: 80px; position:absolute; top:40%;">
+                <i class="material-icons">chevron_right</i>
+            </button>
             <div style="height:90%; width:90%; margin-top:2%; margin-bottom:5%; margin-left:5%; margin-right:5%;">
                 <router-outlet></router-outlet>
             </div>
         </div>
+
+        <app-bottomsheet></app-bottomsheet>
+
 
         <!-- Button for the Chat. Opens up the log and has a Send and Close button.
              The Chat button is fixed on the bottom right of the screen so it moves along with the rest of the browser for easier navigation-->

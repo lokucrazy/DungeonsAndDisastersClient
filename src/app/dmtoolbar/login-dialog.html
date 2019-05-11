@@ -1,0 +1,29 @@
+<h1 mat-dialog-title *ngIf="login">Create User</h1>
+<h1 mat-dialog-title *ngIf="!login">Login</h1>
+<div mat-dialog-content>
+  <p>Username:</p>
+  <mat-form-field>
+    <input matInput type="text" value="" #inputUsername>
+  </mat-form-field>
+  <p>Password:</p>
+  <mat-form-field>
+    <input matInput type="password" #inputPassword>
+  </mat-form-field>
+  <p *ngIf="login">Birthday:</p>
+  <mat-form-field *ngIf="login">
+    <input matInput type="date" #inputBirthday>
+  </mat-form-field>
+  <br>
+  <a mat-button color="warn" (click)="login = false;" *ngIf="login">Or, login Instead</a>
+  <a mat-button color="warn" (click)="login = true;" *ngIf="!login">Or, Create User Instead</a>
+</div>
+<div mat-dialog-actions>
+
+  <button mat-raised-button (click)="fakelogin()" cdkFocusInitial *ngIf="!login">Fake Login</button>
+  <!-- THIS IS FOR DEV, it replaces the loginsubmit button if a user is needed
+     <button mat-raised-button (click)="loginsubmit(inputUsername.value, inputPassword.value)" cdkFocusInitial *ngIf="!login">Login</button>
+  -->
+
+  <button mat-raised-button (click)="submit(inputUsername.value, inputPassword.value, inputBirthday.value)" cdkFocusInitial *ngIf="login">Submit</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>

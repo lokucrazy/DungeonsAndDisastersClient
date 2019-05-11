@@ -1,3 +1,4 @@
-<p>
-  You clicked the Personal Notes Button!
-</p>
+<mat-form-field floatlabel="never" style="width:100%; height:30%;">
+  <textarea matInput [(ngModel)]="user.notes" #tArea></textarea>
+</mat-form-field>
+<button type="button" mat-raised-button color="accent" (click)="save(tArea.value)">Save Notes</button>
