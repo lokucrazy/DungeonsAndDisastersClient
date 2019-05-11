@@ -25,9 +25,13 @@
                 <h1>Chat</h1>
                 
                 <br>
-                <textarea type="text" id="chat-show" [readonly]="true"></textarea>
-                
+                <ul>
+                <li id="chat-show" *ngFor="let message of messages">{{message}}
 
+                </li>
+                </ul>
+
+                
                 <br><br>
             
                 <input type="text" id="chat" #message>

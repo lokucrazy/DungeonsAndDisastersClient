@@ -41,8 +41,12 @@ export class AppComponent implements OnInit {
     document.getElementById("myForm").style.display = "none";
   }
 
+  messages = [];
+  i:number = 0;
   sendMsg(message:string) {
-    document.getElementById("chat-show").textContent = this.currentUser + ": " + message;
+    this.messages[this.i] = message;
+    document.getElementById("chat-show").textContent = this.messages[this.i];
+    this.i++;
   }
   
 }
