@@ -37,6 +37,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { ChatComponent } from './chat/chat.component';
+import { MatDatepickerModule,  } from '@angular/material/datepicker';
+import { MatNativeDateModule } from  '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -77,12 +80,15 @@ import { ChatComponent } from './chat/chat.component';
     MatBottomSheetModule,
     MatListModule,
     MatDividerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     LookupService,
     LoginService,
-    GetuserService
+    GetuserService,
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginDialogComponent, FetchUserInfoSnackComponent, BottomSheetBoxComponent]

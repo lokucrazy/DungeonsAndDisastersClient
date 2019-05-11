@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDatepicker } from '@angular/material';
 import { AppComponent } from '../app.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateuserService } from '../services/createuser.service';
 import { User } from '../models/User';
 import { LoginService } from '../services/login.service';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+
 
 
 
@@ -75,7 +76,7 @@ export class LoginDialogComponent {
 
   newUser: User;
   login: boolean;
-  fakeUser: User;
+  birfday: Date = new Date();
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
@@ -101,12 +102,14 @@ export class LoginDialogComponent {
           this.dialogRef.close();
       }
 
-      public submit(username, password, birthdate): void {
+      public submit(username, password): void {
+        this.newUser.birthdate = new Date();
         this.newUser.username = username;
         this.newUser.password = password;
-        this.newUser.birthdate = birthdate;
-        console.log(username, password, birthdate);
+        this.newUser.birthdate = this.birfday;
+        console.log(username, password, this.newUser.birthdate);
         this.createuserService.createUser(this.newUser).subscribe(
+          data => localStorage.setItem('currentUser', JSON.stringify(data)),
           err => console.log(err)
         );
         this.dialogRef.close();

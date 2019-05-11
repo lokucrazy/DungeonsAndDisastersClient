@@ -2,9 +2,13 @@
 <mat-list *ngIf="DMsessionflag">
   <mat-list-item *ngFor="let DMsession of DMsessions">
     Session Id: {{DMsession.identifier}}
+    <span style = "padding: 15px;"></span>
     Date Made: {{DMsession.created_at | date}}
+    <span style = "padding: 15px;"></span>
     Session DM: {{DMsession.dm_id}}
+    <span style = "padding: 15px;"></span>
     <!-- SESSION ACTIVE STATUS -->
+    <button type="button" mat-raised-button color="accent" (click)="connect(DMsession.identifier)" style="position: absolute; right: 20px;">Connect</button>
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
@@ -13,8 +17,11 @@
 <mat-list *ngIf="Playersessionflag">
   <mat-list-item *ngFor="let Playersession of playerSessions">
     Session Id: {{Playersession.identifier}}
+    <span style = "padding: 15px;"></span>
     Date Made: {{Playersession.created_at | date}}
+    <span style = "padding: 15px;"></span>
     Session DM: {{Playersession.dm_id}}
+    <span style = "padding: 15px;"></span>
     <!-- SESSION ACTIVE STATUS -->
     <mat-divider></mat-divider>
   </mat-list-item>

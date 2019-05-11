@@ -35,4 +35,8 @@ export class DisplaySessionsComponent implements OnInit {
       this.playerSessions = this.getsessionservice.getSessions(this.user.session_ids);
     }
   }
+
+  public connect(sessionID: string){
+    console.log(sessionID);
+  }
 }

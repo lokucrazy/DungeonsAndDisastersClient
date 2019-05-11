@@ -24,10 +24,11 @@ export class CreateuserService {
   createUser(user: User): Observable <User[]> {
     console.log(user);
     // this.request = this.link.concat(user.username);
-    if (!this.getUser.loginrequest(user)) {
-      return this.http.post<User[]>(this.link, user, httpOptions);
-    } else {
-      console.log('User already exists');
-    }
+    // if (!this.getUser.loginrequest(user)) {
+    //   return this.http.post<User[]>(this.link, user, httpOptions);
+    // } else {
+    //   console.log('User already exists');
+    // }
+    return this.http.post<User[]>(this.link, user, httpOptions);
   }
 }
