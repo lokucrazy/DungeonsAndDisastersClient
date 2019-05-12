@@ -1,14 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDatepicker } from '@angular/material';
-import { AppComponent } from '../app.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { CreateuserService } from '../services/createuser.service';
 import { User } from '../models/User';
 import { LoginService } from '../services/login.service';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
-
-
-
+import { GetuserService } from '../services/getuser.service';
 
 export interface DialogData {
   username: string;
@@ -25,21 +20,23 @@ export class DMToolbarComponent implements OnInit {
 
   currentUser: User;
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+      private loginService: LoginService,
+      private getUserService: GetuserService
+    ) {}
 
   ngOnInit() {
-    this.getDropDownInfo();
-  }
-
-
-  public getDropDownInfo(): void {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = this.getUserService.getUser();
   }
 
   public logout(): void {
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('activeSesion');
+    localStorage.removeItem('activeSession');
     this.currentUser = null;
+  }
+
+  public refresh(): void {
+    this.currentUser = this.getUserService.getUser();
   }
 }
 
@@ -79,11 +76,13 @@ export class LoginDialogComponent {
   newUser: User;
   login: boolean;
   birfday: Date = new Date();
+  currentUser: User;
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
       private createuserService: CreateuserService,
       private loginService: LoginService,
+      private getUserService: GetuserService,
       @Inject(MAT_DIALOG_DATA) public data: DialogData) {
         this.newUser = {
           identifier: null,
@@ -114,6 +113,7 @@ export class LoginDialogComponent {
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
           err => console.log(err)
         );
+        this.currentUser = this.getUserService.getUser();
         this.dialogRef.close();
       }
 
@@ -124,6 +124,7 @@ export class LoginDialogComponent {
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
           err => console.log(err)
         );
+        this.currentUser = this.getUserService.getUser();
         this.dialogRef.close();
       }
 }

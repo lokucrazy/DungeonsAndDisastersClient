@@ -79,8 +79,6 @@ export class DisplaySessionsComponent implements OnInit {
                     localStorage.setItem('activeSession', JSON.stringify(this.session));
                   }
                 }
-              // THIS IS FOR CONNECTING A PLAYER TO THE SESSION FOR THE FIRST TIME
-              //  this.session.player_ids.push(this.user.identifier);
               }
           }
   }
