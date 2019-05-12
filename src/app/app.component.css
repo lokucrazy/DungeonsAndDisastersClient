@@ -29,7 +29,7 @@
   background-color: rgb(53, 52, 52);
 }
 
-/* Full-width textarea */
+/* Full-width ul */
 .form-container ul {
   width: 290px;
   padding: 5px;
@@ -37,10 +37,10 @@
   background: rgb(53, 52, 52);
   overflow: auto;
   resize: vertical;
-  min-height: 150px;
+  min-height: 300px;
 }
 
-/* Full-width textarea */
+/* Full-width input */
 .form-container input {
   width: 290px;
   padding: 5px;
@@ -50,13 +50,13 @@
   min-height: 100px;
 }
 
-/* When the textarea gets focus, do something */
+/* When the ul gets focus, do something */
 .form-container ul:focus {
   background-color: #ddd;
   outline: none;
 }
 
-/* When the textarea gets focus, do something */
+/* When the input gets focus, do something */
 .form-container input:focus {
   background-color: #ddd;
   outline: none;
