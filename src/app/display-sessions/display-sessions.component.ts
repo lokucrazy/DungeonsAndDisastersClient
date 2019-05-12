@@ -5,6 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetsessionsService } from '../services/getsessions.service';
 import { Session } from '../models/Session';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Component({
   selector: 'app-display-sessions',
   templateUrl: './display-sessions.component.html',
@@ -21,6 +25,7 @@ export class DisplaySessionsComponent implements OnInit {
   Playersessionflag: boolean;
   playerSessions: Session[];
   DMsessions: Session[];
+  link: 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
 
   ngOnInit() {
     this.user = this.getuserservice.getUser();
@@ -36,7 +41,16 @@ export class DisplaySessionsComponent implements OnInit {
     }
   }
 
-  public connect(sessionID: string){
-    console.log(sessionID);
+  public DMconnect(sessionID: string) {
+
+    this.http.patch(this.link.concat(sessionID + '/'), true, httpOptions)
+      .subscribe(
+        err => {console.log(err)}
+    );
+  }
+
+  public Playerconnect(sessionID: string, dmID: string) {
+
   }
 }
+

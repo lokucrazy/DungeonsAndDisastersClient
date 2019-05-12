@@ -5,8 +5,6 @@ import { Weapon } from '../models/Weapon';
 import { Spell } from '../models/Spell';
 import { Armor } from '../models/Armor';
 import { Race } from '../models/Race';
-import { SearchType } from '../models/SearchType';
-import { AppComponent } from '../app.component';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
