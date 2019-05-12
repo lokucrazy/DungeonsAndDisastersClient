@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { GetuserService } from '../services/getuser.service';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetsessionsService } from '../services/getsessions.service';
-import { Session } from '../models/Session';
+import { Session, SessionState } from '../models/Session';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,7 +25,9 @@ export class DisplaySessionsComponent implements OnInit {
   Playersessionflag: boolean;
   playerSessions: Session[];
   DMsessions: Session[];
+  session: Session;
   link: 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
+  activeStatus: SessionState = { running : false};
 
   ngOnInit() {
     this.user = this.getuserservice.getUser();
@@ -42,15 +44,42 @@ export class DisplaySessionsComponent implements OnInit {
   }
 
   public DMconnect(sessionID: string) {
-
-    this.http.patch(this.link.concat(sessionID + '/'), true, httpOptions)
+    this.activeStatus.running = true;
+    this.http.patch(this.link.concat(sessionID + '/'), this.activeStatus, httpOptions)
       .subscribe(
         err => {console.log(err)}
     );
+    //TODO: WRITE GOOD SESSION TO LOCALSTORAGE
   }
 
   public Playerconnect(sessionID: string, dmID: string) {
 
+    this.http.get<Session>(this.link.concat(sessionID) , httpOptions)
+      .subscribe(
+        data => {
+          this.session = data;
+      },
+        err => {
+          console.log(err);
+        }
+    );
+    if (this.session.session_state.running !== true) {
+      console.log('Session is NOT active');
+    } else {
+      if (this.session.player_ids === undefined || this.session.player_ids.length === 0) {
+        console.log('There are no players in the current session');
+      } else {
+        // tslint:disable-next-line:prefer-const
+        for (let userID of this.session.player_ids) {
+          if (userID === this.user.identifier) {
+            console.log('Player found in session');
+            //TODO: WRITE GOOD SESSION TO LOCALSTORAGE
+          }
+        }
+        //THIS IS FOR CONNECTING A PLAYER TO THE SESSION FOR THE FIRST TIME
+        //  this.session.player_ids.push(this.user.identifier);
+      }
+    }
   }
 }
 
