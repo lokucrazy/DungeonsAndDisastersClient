@@ -21,8 +21,8 @@ export class DisplaySessionsComponent implements OnInit {
               private getsessionservice: GetsessionsService) { }
 
   user: User;
-  DMsessionflag: boolean;
-  Playersessionflag: boolean;
+  DMsessionflag = false;
+  Playersessionflag = false;
   playerSessions: Session[];
   DMsessions: Session[];
   session: Session;
@@ -34,12 +34,15 @@ export class DisplaySessionsComponent implements OnInit {
     this.user = this.getuserservice.getUser();
     if ( this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0) {
       this.DMsessionflag = false;
-    } else if (this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0 ) {
-      this.Playersessionflag = false;
     } else {
       this.DMsessionflag = true;
-      this.Playersessionflag = true;
       this.DMsessions = this.getsessionservice.getSessions(this.user.dm_session_ids);
+    }
+
+    if (this.user.session_ids === undefined || this.user.session_ids.length === 0 ) {
+      this.Playersessionflag = false;
+    } else {
+      this.Playersessionflag = true;
       this.playerSessions = this.getsessionservice.getSessions(this.user.session_ids);
     }
   }

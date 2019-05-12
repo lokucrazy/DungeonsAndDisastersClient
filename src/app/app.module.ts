@@ -39,6 +39,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ChatComponent } from './chat/chat.component';
 import { MatDatepickerModule,  } from '@angular/material/datepicker';
 import { MatNativeDateModule } from  '@angular/material';
+import { JoinComponent } from './join/join.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MatNativeDateModule } from  '@angular/material';
     BottomSheetBoxComponent,
     DisplaySessionsComponent,
     CreateSessionComponent,
-    ChatComponent
+    ChatComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,
