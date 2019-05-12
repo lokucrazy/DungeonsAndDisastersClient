@@ -26,8 +26,9 @@ export class DisplaySessionsComponent implements OnInit {
   playerSessions: Session[];
   DMsessions: Session[];
   session: Session;
-  link: 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
+  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
   activeStatus: SessionState = { running : false};
+  turbolink: string;
 
   ngOnInit() {
     this.user = this.getuserservice.getUser();
@@ -45,14 +46,16 @@ export class DisplaySessionsComponent implements OnInit {
 
   public DMconnect(sessionID: string) {
     this.activeStatus.running = true;
-    this.http.patch(this.link.concat(sessionID + '/'), this.activeStatus, httpOptions)
+    this.link = this.link.concat(sessionID.concat('/state'));
+    console.log(this.link);
+    this.http.patch(this.link, this.activeStatus, httpOptions)
       .subscribe(
         data => { localStorage.setItem('activeSession', JSON.stringify(data)); },
         err => {console.log(err); }
     );
   }
 
-  public Playerconnect(sessionID: string, dmID: string) {
+  public Playerconnect(sessionID: string) {
 
     this.http.get<Session>(this.link.concat(sessionID) , httpOptions)
       .subscribe(
