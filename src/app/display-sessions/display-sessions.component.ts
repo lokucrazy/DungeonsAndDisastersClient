@@ -82,4 +82,3 @@ export class DisplaySessionsComponent implements OnInit {
     }
   }
 }
-
