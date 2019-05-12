@@ -38,6 +38,7 @@ export class DMToolbarComponent implements OnInit {
 
   public logout(): void {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('activeSesion');
     this.currentUser = null;
   }
 }
@@ -56,6 +57,7 @@ export class LoginComponent {
   constructor(public dialog: MatDialog) {}
 
   public openDialog(): void {
+// tslint:disable-next-line: no-use-before-declare
       const dialogRef = this.dialog.open(LoginDialogComponent, {
           width: '500px',
           data: {username: this.username, password: this.password, birthday: this.birthday}
@@ -95,7 +97,7 @@ export class LoginDialogComponent {
           session_ids: null,
           dm_session_ids: null,
           npc_ids: null
-        }
+        };
       }
 
       public onNoClick(): void {

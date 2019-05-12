@@ -21,7 +21,7 @@ export class GetsessionsService {
   getSessions(sessionids: string[] ) {
 
     const array = sessionids;
-    if(sessionids === null || sessionids.length === 0) {
+    if (sessionids === null || sessionids.length === 0) {
       return null;
     }
     for (const id of array) {

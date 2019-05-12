@@ -47,9 +47,9 @@ export class DisplaySessionsComponent implements OnInit {
     this.activeStatus.running = true;
     this.http.patch(this.link.concat(sessionID + '/'), this.activeStatus, httpOptions)
       .subscribe(
-        err => {console.log(err)}
+        data => { localStorage.setItem('activeSession', JSON.stringify(data)); },
+        err => {console.log(err); }
     );
-    //TODO: WRITE GOOD SESSION TO LOCALSTORAGE
   }
 
   public Playerconnect(sessionID: string, dmID: string) {
@@ -58,27 +58,27 @@ export class DisplaySessionsComponent implements OnInit {
       .subscribe(
         data => {
           this.session = data;
-      },
+        },
         err => {
           console.log(err);
         }
-    );
+      );
     if (this.session.session_state.running !== true) {
       console.log('Session is NOT active');
     } else {
-      if (this.session.player_ids === undefined || this.session.player_ids.length === 0) {
-        console.log('There are no players in the current session');
-      } else {
-        // tslint:disable-next-line:prefer-const
-        for (let userID of this.session.player_ids) {
-          if (userID === this.user.identifier) {
-            console.log('Player found in session');
-            //TODO: WRITE GOOD SESSION TO LOCALSTORAGE
+            if (this.session.player_ids === undefined || this.session.player_ids.length === 0) {
+              console.log('There are no players in the current session');
+            } else {
+                // tslint:disable-next-line:prefer-const
+                for (let userID of this.session.player_ids) {
+                  if (userID === this.user.identifier) {
+                    console.log('Player found in session');
+                    localStorage.setItem('activeSession', JSON.stringify(this.session));
+                  }
+                }
+              // THIS IS FOR CONNECTING A PLAYER TO THE SESSION FOR THE FIRST TIME
+              //  this.session.player_ids.push(this.user.identifier);
+              }
           }
-        }
-        //THIS IS FOR CONNECTING A PLAYER TO THE SESSION FOR THE FIRST TIME
-        //  this.session.player_ids.push(this.user.identifier);
-      }
-    }
   }
 }
