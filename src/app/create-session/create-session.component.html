@@ -4,15 +4,17 @@
 </mat-radio-group>
 <br><br>
 <div *ngIf="selection == 'New Game'">
-  Create a new game here:<br><br>
+
   <button mat-raised-button color="accent" (click)="newGameRequest()">New Game</button>
 </div>
 <div *ngIf="selection == 'New Session'">
     Input the sessionID:<br><br>
     <mat-form-field style="margin:10px;">
-      <input matInput placeholder="SessionID">
+
+      <input matInput placeholder="SessionID" #newsessionIDfield>
     </mat-form-field>
-    <button mat-raised-button color="accent" (click)="newSessionRequest()">New Session</button>
+    <button mat-raised-button color="accent" (click)="newSessionRequest(newsessionIDfield.value)">New Session</button>
+
 </div>
 <div *ngIf="newID">
   New Session Created! ID: {{newID}}

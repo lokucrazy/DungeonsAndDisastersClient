@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDatepicker } from '@angular/material';
 import { AppComponent } from '../app.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateuserService } from '../services/createuser.service';
 import { User } from '../models/User';
 import { LoginService } from '../services/login.service';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+
 
 
 
@@ -28,12 +29,14 @@ export class DMToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.getDropDownInfo();
+
   }
 
 
   public getDropDownInfo(): void {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
+
 
   public logout(): void {
     localStorage.removeItem('currentUser');
@@ -75,7 +78,9 @@ export class LoginDialogComponent {
 
   newUser: User;
   login: boolean;
-  fakeUser: User;
+
+  birfday: Date = new Date();
+
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
@@ -90,30 +95,28 @@ export class LoginDialogComponent {
           notes: null,
           created_at: null,
           modified_at: null,
-          characters: null,
-          sessions: null};
-        this.fakeUser = {
-          identifier: null,
-          username : null,
-          password : null,
-          birthdate: null,
-          notes: null,
-          created_at: null,
-          modified_at: null,
-          characters: null,
-          sessions: null};
+          character_ids: null,
+          session_ids: null,
+          dm_session_ids: null,
+          npc_ids: null
+        }
+
       }
 
       public onNoClick(): void {
           this.dialogRef.close();
       }
 
-      public submit(username, password, birthdate): void {
+
+      public submit(username, password): void {
+        this.newUser.birthdate = new Date();
         this.newUser.username = username;
         this.newUser.password = password;
-        this.newUser.birthdate = birthdate;
-        console.log(username, password, birthdate);
+        this.newUser.birthdate = this.birfday;
+        console.log(username, password, this.newUser.birthdate);
         this.createuserService.createUser(this.newUser).subscribe(
+          data => localStorage.setItem('currentUser', JSON.stringify(data)),
+
           err => console.log(err)
         );
         this.dialogRef.close();
@@ -122,20 +125,12 @@ export class LoginDialogComponent {
       public loginsubmit(username, password): void {
         this.newUser.username = username;
         this.newUser.password = password;
-        this.login = this.loginService.loginrequest(this.newUser);
-        if (this.login) {
-          console.log('Login Successful');
-        } else {
-          console.log('Login failed.');
-        }
+
+        this.loginService.loginrequest(this.newUser).subscribe(
+          data => localStorage.setItem('currentUser', JSON.stringify(data)),
+          err => console.log(err)
+        );
         this.dialogRef.close();
       }
 
-      public fakelogin(): void {
-        this.fakeUser.username = 'will';
-        this.fakeUser.password = 'pass';
-        this.fakeUser.identifier = '69';
-        this.fakeUser.sessions = ['session1', 'session2', 'session3' ];
-        localStorage.setItem('currentUser', JSON.stringify(this.fakeUser));
-      }
 }

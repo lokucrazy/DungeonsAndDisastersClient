@@ -1,47 +1,30 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/User';
-import { Observable , of } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { identifierModuleUrl } from '@angular/compiler';
+import { Observable } from 'rxjs';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class LoginService implements OnInit {
 
-  link = 'http://ec2-54-89-116-106.compute-1.amazonaws.com/api/v1/users';
-  users: User[];
-  foundUser: User;
+  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/login/';
   found = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
+  loginrequest(user: User): Observable <User> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: new HttpParams().set('password', user.password)
+    };
 
+    return this.http.post<User>(this.link + user.username, user, httpOptions);
 
-  loginrequest(user: User) {
-
-    this.http.get<User[]>(this.link)
-    .subscribe(data => {
-
-      this.users = data;
-      console.log(this.users);
-      for (const i of this.users) {
-        if (i.username === user.username && i.password === user.password) {
-          console.log(i);
-          this.foundUser = i;
-          localStorage.setItem('currentUser', JSON.stringify(this.foundUser));
-          this.found = true;
-        }
-      }
-    });
-    return this.found;
   }
 }

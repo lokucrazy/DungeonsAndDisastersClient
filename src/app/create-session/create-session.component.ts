@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../models/Session';
-import { User } from '../models/user';
+import { User } from '../models/User';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetuserService } from '../services/getuser.service';
 import { Observable } from 'rxjs';
@@ -20,9 +20,14 @@ export class CreateSessionComponent implements OnInit {
   selection: string;
   choices: string[] = ['New Game', 'New Session'];
   newSession: Session;
-  link = 'ec2-54-89-116-106.compute-1.amazonaws.com/api/v1/sessions/';
+
+  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
   request: string;
+  newgameID: string;
+  newsessionID: string;
   newID: string;
+  DMID: string;
+
 
   constructor(private getuserservice: GetuserService,
               private http: HttpClient ) {
@@ -47,10 +52,18 @@ export class CreateSessionComponent implements OnInit {
     this.user = this.getuserservice.getUser();
   }
 
-  private newGameRequest() {
+
+  public newGameRequest() {
+    this.newSession.dm_id = this.user.identifier;
     this.http.post<Session>(this.link, this.newSession, httpOptions)
       .subscribe(data => {
-        this.user.sessions.push(data.identifier);
+        if ( this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0 ) {
+          this.user.dm_session_ids = [data.identifier];
+        } else {
+        this.user.dm_session_ids.push(data.identifier);
+        }
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
+
         this.newID = data.identifier;
         return data.identifier;
       },
@@ -58,11 +71,19 @@ export class CreateSessionComponent implements OnInit {
       );
   }
 
-  private newSessionRequest() {
+
+  public newSessionRequest(sessionID: string) {
     this.newSession.dm_id = this.user.identifier;
+    this.newSession.identifier = sessionID;
     this.http.post<Session>(this.link, this.newSession, httpOptions)
     .subscribe(data => {
-      this.user.sessions.push(data.identifier);
+      if ( this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0 ) {
+        this.user.dm_session_ids = [data.identifier];
+      } else {
+      this.user.dm_session_ids.push(data.identifier);
+      }
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
+
       this.newID = data.identifier;
       return data.identifier;
     },
