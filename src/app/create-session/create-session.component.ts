@@ -31,6 +31,7 @@ export class CreateSessionComponent implements OnInit {
               private http: HttpClient ) {
                 this.newSession = {
                   identifier: null,
+                  session_state: false,
                   created_at: null,
                   modified_at: null,
                   dm_id: null,
