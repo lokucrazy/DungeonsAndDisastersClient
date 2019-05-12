@@ -3,9 +3,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from '../models/User';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 
 export class LoginService implements OnInit {
 
@@ -23,5 +25,6 @@ export class LoginService implements OnInit {
     };
 
     return this.http.post<User>(this.link + user.username, user, httpOptions);
+
   }
 }

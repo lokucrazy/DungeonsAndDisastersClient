@@ -12,18 +12,22 @@ const httpOptions = {
 })
 export class GetsessionsService {
 
+
   sessions: Session[] = [];
   request: string;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
+
 
   constructor(private http: HttpClient) { }
 
   getSessions(sessionids: string[] ) {
 
     const array = sessionids;
+
     if(sessionids === null || sessionids.length === 0) {
       return null;
     }
+
     for (const id of array) {
       this.request = this.link.concat(id);
       this.http.get<Session>(this.request)

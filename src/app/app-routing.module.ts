@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: 'display-sessions', component: DisplaySessionsComponent},
   {path: 'create-session', component: CreateSessionComponent},
   {path: 'chat', component: ChatComponent},
+
 ];
 
 @NgModule({

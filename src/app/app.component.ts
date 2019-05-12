@@ -12,6 +12,11 @@ import { SearchType } from './models/SearchType';
 import { Button } from 'protractor';
 import { style } from '@angular/animations';
 import { AstMemoryEfficientTransformer } from '@angular/compiler';
+import { GetuserService } from './services/getuser.service';
+import { userInfo } from 'os';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { MESSAGES_CONTAINER_ID } from '@angular/cdk/a11y';
+
 
 
 @Component({
@@ -37,4 +42,13 @@ export class AppComponent implements OnInit {
     document.getElementById("myForm").style.display = "none";
   }
 
+  messages = [];
+  i:number = 0;
+  sendMsg(message:string) {
+    this.messages[this.i] = message;
+    document.getElementById("chat").textContent = this.messages[this.i];
+    this.i++;
+  }
+  
 }
+

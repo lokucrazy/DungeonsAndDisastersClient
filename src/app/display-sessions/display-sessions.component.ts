@@ -17,6 +17,7 @@ export class DisplaySessionsComponent implements OnInit {
               private getsessionservice: GetsessionsService) { }
 
   user: User;
+
   DMsessionflag: boolean;
   Playersessionflag: boolean;
   playerSessions: Session[];
@@ -39,4 +40,5 @@ export class DisplaySessionsComponent implements OnInit {
   public connect(sessionID: string){
     console.log(sessionID);
   }
+
 }
