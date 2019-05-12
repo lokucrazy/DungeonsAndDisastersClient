@@ -5,8 +5,8 @@ export interface SessionState {
 export interface Session {
     identifier: string;
     session_state: SessionState;
-    created_at: Date;
-    modified_at: Date;
+    created_on: Date;
+    last_modified_on: Date;
     dm_id: string;
     non_combat_log: string[];
     combat_log: string[];

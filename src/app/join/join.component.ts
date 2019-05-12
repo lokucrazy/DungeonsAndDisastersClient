@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { GetuserService } from '../services/getuser.service';
+import { User } from '../models/User';
+import { Session } from '../models/Session';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
   selector: 'app-join',
@@ -10,12 +15,27 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class JoinComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+  link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
+  request: string;
+
+  constructor(
+    private http: HttpClient,
+    private getUserService: GetuserService
+  ) { }
 
   ngOnInit() {
+    this.currentUser = this.getUserService.getUser();
   }
 
-  connectToSession(sessionID: string){
-
+  connectToSession(sessionID: string) {
+    this.request = this.link.concat(sessionID.concat('/users/'.concat(this.currentUser.identifier)));
+    this.http.put<Session>(this.request, httpOptions)
+      .subscribe(
+        data => {
+          console.log(this.currentUser.username + 'was added to the session!');
+          localStorage.setItem('activeSession', JSON.stringify(data));},
+        err => console.log(err)
+    );
   }
 }

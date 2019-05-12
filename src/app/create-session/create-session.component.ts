@@ -32,8 +32,8 @@ export class CreateSessionComponent implements OnInit {
                 this.newSession = {
                   identifier: null,
                   session_state: null,
-                  created_at: null,
-                  modified_at: null,
+                  created_on: null,
+                  last_modified_on: null,
                   dm_id: null,
                   non_combat_log: null,
                   combat_log: null,

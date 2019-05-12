@@ -32,14 +32,14 @@ export class DisplaySessionsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.getuserservice.getUser();
-    if ( this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0) {
+    if ( this.user.dm_session_ids === null || this.user.dm_session_ids.length === 0) {
       this.DMsessionflag = false;
     } else {
       this.DMsessionflag = true;
       this.DMsessions = this.getsessionservice.getSessions(this.user.dm_session_ids);
     }
 
-    if (this.user.session_ids === undefined || this.user.session_ids.length === 0 ) {
+    if (this.user.session_ids === null || this.user.session_ids.length === 0 ) {
       this.Playersessionflag = false;
     } else {
       this.Playersessionflag = true;
