@@ -1,5 +1,6 @@
 export interface Session {
     identifier: string;
+    session_state: boolean;
     created_at: Date;
     modified_at: Date;
     dm_id: string;
