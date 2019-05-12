@@ -29,12 +29,14 @@ export class DMToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.getDropDownInfo();
+
   }
 
 
   public getDropDownInfo(): void {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
+
 
   public logout(): void {
     localStorage.removeItem('currentUser');
@@ -76,7 +78,9 @@ export class LoginDialogComponent {
 
   newUser: User;
   login: boolean;
+
   birfday: Date = new Date();
+
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
@@ -96,11 +100,13 @@ export class LoginDialogComponent {
           dm_session_ids: null,
           npc_ids: null
         }
+
       }
 
       public onNoClick(): void {
           this.dialogRef.close();
       }
+
 
       public submit(username, password): void {
         this.newUser.birthdate = new Date();
@@ -110,6 +116,7 @@ export class LoginDialogComponent {
         console.log(username, password, this.newUser.birthdate);
         this.createuserService.createUser(this.newUser).subscribe(
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
+
           err => console.log(err)
         );
         this.dialogRef.close();
@@ -118,10 +125,12 @@ export class LoginDialogComponent {
       public loginsubmit(username, password): void {
         this.newUser.username = username;
         this.newUser.password = password;
+
         this.loginService.loginrequest(this.newUser).subscribe(
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
           err => console.log(err)
         );
         this.dialogRef.close();
       }
+
 }

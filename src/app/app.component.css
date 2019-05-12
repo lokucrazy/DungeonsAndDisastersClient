@@ -18,7 +18,7 @@
   position: fixed;
   bottom: 0;
   right: 15px;
-  border: 3px solid #7b1fa2;
+  border: 3px solid #4CAF50;
   z-index: 9;
 }
 
@@ -30,17 +30,34 @@
 }
 
 /* Full-width textarea */
-.form-container textarea {
+.form-container ul {
+  width: 290px;
+  padding: 5px;
+  border: none;
+  background: rgb(53, 52, 52);
+  overflow: auto;
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Full-width textarea */
+.form-container input {
   width: 290px;
   padding: 5px;
   border: none;
   background: #f1f1f1;
   resize: none;
-  min-height: 300px;
+  min-height: 100px;
 }
 
 /* When the textarea gets focus, do something */
-.form-container textarea:focus {
+.form-container ul:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* When the textarea gets focus, do something */
+.form-container input:focus {
   background-color: #ddd;
   outline: none;
 }
