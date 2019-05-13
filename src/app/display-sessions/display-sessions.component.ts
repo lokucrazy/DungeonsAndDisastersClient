@@ -88,16 +88,29 @@ export class DisplaySessionsComponent implements OnInit {
     );
   }
 
+  public DMdisconnect(sessionID: string) {
+    this.activeStatus.running = false;
+    this.link = this.link.concat(sessionID.concat('/state'));
+    console.log(this.link);
+    this.http.patch(this.link, this.activeStatus, httpOptions)
+      .subscribe(
+        err => console.log(err)
+    );
+    localStorage.removeItem('activeSession');
+  }
+
   public Playerconnect(sessionID: string) {
 
     this.getsessionservice.getSessions(sessionID).subscribe(
-      data => {this.session = data[0]; },
+      data => {this.session = data; },
       err => console.log(err)
     );
     if (this.session.session_state.running !== true) {
       console.log('Session is NOT active');
     } else {
-            if (this.session.player_ids === undefined || this.session.player_ids.length === 0) {
+            if (this.session.player_ids === null) {
+              console.log('The session does not exist');
+            } else if (this.session.player_ids.length === 0){
               console.log('There are no players in the current session');
             } else {
                 // tslint:disable-next-line:prefer-const

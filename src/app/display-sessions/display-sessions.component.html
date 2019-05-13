@@ -9,7 +9,8 @@
     Session DM ID: {{DMsession.dm_id}}
     <span style = "padding: 10px;"></span>
     Session State: {{DMsession.session_state}}
-    <button type="button" mat-raised-button color="accent" (click)="DMconnect(DMsession.identifier)" style="position: absolute; right: 5px;">Connect</button>
+    <button type="button" mat-raised-button color="accent" (click)="DMconnect(DMsession.identifier)" style="position:absolute; right: 125px;">Connect</button>
+    <button type="button" mat-raised-button color="accent" (click)="DMdisconnect(DMsession.identifier)" style="position: absolute; right: 5px;">Disconnect</button>
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
@@ -21,7 +22,7 @@
     <span style = "padding: 10px;"></span>
     Date Made: {{Playersession.created_on | date}}
     <span style = "padding: 10px;"></span>
-    Session DM: {{Playersession.dm_id}}
+    Session DM ID: {{Playersession.dm_id}}
     <span style = "padding: 10px;"></span>
     Session State: {{Playersession.session_state}}
     <button type="button" mat-raised-button color="accent" (click)="Playerconnect(Playersession.identifier)" style="position: absolute; right: 5px;">Connect</button>
