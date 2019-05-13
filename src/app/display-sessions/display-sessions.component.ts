@@ -41,8 +41,8 @@ export class DisplaySessionsComponent implements OnInit {
   user: User;
   DMsessionflag = false;
   Playersessionflag = false;
-  playerSessions: Session[];
-  DMsessions: Session[];
+  playerSessions: Session[] = [];
+  DMsessions: Session[] = [];
   session: Session;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
   activeStatus: SessionState = { running : undefined};
@@ -54,14 +54,26 @@ export class DisplaySessionsComponent implements OnInit {
       this.DMsessionflag = false;
     } else {
       this.DMsessionflag = true;
-      this.DMsessions = this.getsessionservice.getSessions(this.user.dm_session_ids);
+      for (const DMsessionid of this.user.dm_session_ids) {
+        this.getsessionservice.getSessions(DMsessionid)
+          .subscribe(
+            data => this.DMsessions.push(data),
+            err => console.log(err)
+          );
+      }
     }
 
     if (this.user.session_ids === null || this.user.session_ids.length === 0 ) {
       this.Playersessionflag = false;
     } else {
       this.Playersessionflag = true;
-      this.playerSessions = this.getsessionservice.getSessions(this.user.session_ids);
+      for (const Playersessionid of this.user.session_ids) {
+        this.getsessionservice.getSessions(Playersessionid)
+          .subscribe(
+            data => this.playerSessions.push(data),
+            err => console.log(err)
+          );
+      }
     }
   }
 
@@ -78,15 +90,10 @@ export class DisplaySessionsComponent implements OnInit {
 
   public Playerconnect(sessionID: string) {
 
-    this.http.get<Session>(this.link.concat(sessionID) , httpOptions)
-      .subscribe(
-        data => {
-          this.session = data;
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    this.getsessionservice.getSessions(sessionID).subscribe(
+      data => {this.session = data[0]; },
+      err => console.log(err)
+    );
     if (this.session.session_state.running !== true) {
       console.log('Session is NOT active');
     } else {

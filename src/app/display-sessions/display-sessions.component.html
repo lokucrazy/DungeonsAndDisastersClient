@@ -1,5 +1,5 @@
 <h1 class="mat-h1" style="text-align: center;">Current Sessions</h1>
-<!-- <h1 class="mat-h2" *ngIf="DMsessionflag">Current DM Sessions</h1> -->
+<h1 class="mat-h2" *ngIf="DMsessionflag">Current DM Sessions</h1>
 <mat-list *ngIf="DMsessionflag">
   <mat-list-item *ngFor="let DMsession of DMsessions">
     Session Id: {{DMsession.identifier}}
@@ -14,7 +14,7 @@
   </mat-list-item>
 </mat-list>
 <br>
-<!-- <h1 class="mat-h2" *ngIf="Playersessionflag">Current Player Sessions</h1> -->
+<h1 class="mat-h2" *ngIf="Playersessionflag">Current Player Sessions</h1>
 <mat-list *ngIf="Playersessionflag">
   <mat-list-item *ngFor="let Playersession of playerSessions">
     Session Id: {{Playersession.identifier}}
