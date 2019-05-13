@@ -18,7 +18,25 @@ export class DisplaySessionsComponent implements OnInit {
 
   constructor(private getuserservice: GetuserService,
               private http: HttpClient,
-              private getsessionservice: GetsessionsService) { }
+              private getsessionservice: GetsessionsService) {
+                this.session = {
+                  identifier: null,
+                  session_state: {running : true},
+                  created_on: null,
+                  last_modified_on: null,
+                  dm_id: null,
+                  non_combat_log: null,
+                  combat_log: null,
+                  date_ended: null,
+                  history_id: null,
+                  chat_id: null,
+                  map_id: null,
+                  combat_id: null,
+                  npc_ids: null,
+                  player_ids: null,
+                  character_ids: null
+                };
+               }
 
   user: User;
   DMsessionflag = false;
@@ -27,7 +45,7 @@ export class DisplaySessionsComponent implements OnInit {
   DMsessions: Session[];
   session: Session;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
-  activeStatus: SessionState = { running : false};
+  activeStatus: SessionState = { running : undefined};
   turbolink: string;
 
   ngOnInit() {

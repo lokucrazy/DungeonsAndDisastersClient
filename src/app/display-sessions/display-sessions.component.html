@@ -1,30 +1,30 @@
 <h1 class="mat-h1" style="text-align: center;">Current Sessions</h1>
-<h1 class="mat-h2" *ngIf="DMsessionflag">Current DM Sessions</h1>
+<!-- <h1 class="mat-h2" *ngIf="DMsessionflag">Current DM Sessions</h1> -->
 <mat-list *ngIf="DMsessionflag">
   <mat-list-item *ngFor="let DMsession of DMsessions">
     Session Id: {{DMsession.identifier}}
-    <span style = "padding: 15px;"></span>
+    <span style = "padding: 10px;"></span>
     Date Made: {{DMsession.created_on | date}}
-    <span style = "padding: 15px;"></span>
+    <span style = "padding: 10px;"></span>
     Session DM ID: {{DMsession.dm_id}}
-    <span style = "padding: 15px;"></span>
-    <!-- SESSION ACTIVE STATUS -->
-    <button type="button" mat-raised-button color="accent" (click)="DMconnect(DMsession.identifier)" style="position: absolute; right: 20px;">Connect</button>
+    <span style = "padding: 10px;"></span>
+    Session State: {{DMsession.session_state}}
+    <button type="button" mat-raised-button color="accent" (click)="DMconnect(DMsession.identifier)" style="position: absolute; right: 5px;">Connect</button>
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
 <br>
-<h1 class="mat-h2" *ngIf="Playersessionflag">Current Player Sessions</h1>
+<!-- <h1 class="mat-h2" *ngIf="Playersessionflag">Current Player Sessions</h1> -->
 <mat-list *ngIf="Playersessionflag">
   <mat-list-item *ngFor="let Playersession of playerSessions">
     Session Id: {{Playersession.identifier}}
-    <span style = "padding: 15px;"></span>
+    <span style = "padding: 10px;"></span>
     Date Made: {{Playersession.created_on | date}}
-    <span style = "padding: 15px;"></span>
+    <span style = "padding: 10px;"></span>
     Session DM: {{Playersession.dm_id}}
-    <span style = "padding: 15px;"></span>
-    <!-- SESSION ACTIVE STATUS -->
-    <button type="button" mat-raised-button color="accent" (click)="Playerconnect(Playersession.identifier)" style="position: absolute; right: 20px;">Connect</button>
+    <span style = "padding: 10px;"></span>
+    Session State: {{Playersession.session_state}}
+    <button type="button" mat-raised-button color="accent" (click)="Playerconnect(Playersession.identifier)" style="position: absolute; right: 5px;">Connect</button>
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>

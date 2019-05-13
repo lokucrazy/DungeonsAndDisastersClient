@@ -29,13 +29,14 @@ export class JoinComponent implements OnInit {
   }
 
   connectToSession(sessionID: string) {
+    console.log('Hello?')
     this.request = this.link.concat(sessionID.concat('/users/'.concat(this.currentUser.identifier)));
+    console.log(this.request);
     this.http.put<Session>(this.request, httpOptions)
       .subscribe(
-        data => {
-          console.log(this.currentUser.username + 'was added to the session!');
-          localStorage.setItem('activeSession', JSON.stringify(data));},
+        data => { localStorage.setItem('activeSession', JSON.stringify(data));
+        },
         err => console.log(err)
-    );
+       );
   }
 }

@@ -12,11 +12,10 @@ const httpOptions = {
 })
 export class GetsessionsService {
 
-  sessions: Session[] = [];
+  sessions: Session[];
   session: Session;
   request: string;
   found: boolean;
-  i: number;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
 
   constructor(private http: HttpClient) {
@@ -40,6 +39,7 @@ export class GetsessionsService {
   }
 
   getSessions(sessionids: string[] ) {
+    this.sessions = [];
     const array = sessionids;
     if (sessionids === undefined || sessionids.length === 0) {
       return null;
@@ -47,7 +47,7 @@ export class GetsessionsService {
     if (sessionids.length === this.sessions.length) {
       return this.sessions;
     }
-    for (const id of array) {
+    for (let id of array) {
       this.requestSession(id)
         .subscribe(
           data => {
