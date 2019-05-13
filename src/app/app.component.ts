@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
     this.messages[this.i] = message;
     console.log(this.messages[this.i]);
     console.log(this.currentUser.username)
-    document.getElementById("chat-show").insertAdjacentText("beforebegin", this.currentUser.username + ": " + this.messages[this.i]);
+    document.getElementById("chat-show").insertAdjacentText("beforebegin", this.messages[this.i]);
     document.getElementById("chat-show").insertAdjacentHTML("beforebegin", "<div></div>");
     this.i++;
   }
