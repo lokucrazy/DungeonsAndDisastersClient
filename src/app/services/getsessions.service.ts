@@ -12,10 +12,7 @@ const httpOptions = {
 })
 export class GetsessionsService {
 
-  sessions: Session[];
-  session: Session;
   request: string;
-  found: boolean;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
 
   constructor(private http: HttpClient) {

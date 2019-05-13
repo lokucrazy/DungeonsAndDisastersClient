@@ -3,7 +3,8 @@ import { GetuserService } from '../services/getuser.service';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetsessionsService } from '../services/getsessions.service';
-import { Session, SessionState } from '../models/Session';
+import { Session } from '../models/Session';
+import { SessionState } from '../models/SessionState';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,23 +20,7 @@ export class DisplaySessionsComponent implements OnInit {
   constructor(private getuserservice: GetuserService,
               private http: HttpClient,
               private getsessionservice: GetsessionsService) {
-                this.session = {
-                  identifier: null,
-                  session_state: {running : true},
-                  created_on: null,
-                  last_modified_on: null,
-                  dm_id: null,
-                  non_combat_log: null,
-                  combat_log: null,
-                  date_ended: null,
-                  history_id: null,
-                  chat_id: null,
-                  map_id: null,
-                  combat_id: null,
-                  npc_ids: null,
-                  player_ids: null,
-                  character_ids: null
-                };
+
                }
 
   user: User;
@@ -43,10 +28,12 @@ export class DisplaySessionsComponent implements OnInit {
   Playersessionflag = false;
   playerSessions: Session[] = [];
   DMsessions: Session[] = [];
-  session: Session;
+  session: Session = null;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
   activeStatus: SessionState = { running : undefined};
   turbolink: string;
+  currentSession: Session;
+  asyncResult: any;
 
   ngOnInit() {
     this.user = this.getuserservice.getUser();
@@ -99,22 +86,30 @@ export class DisplaySessionsComponent implements OnInit {
     localStorage.removeItem('activeSession');
   }
 
-  public Playerconnect(sessionID: string) {
+  public async Playerconnect(sessionID: string) {
+    await this.getsessionservice.getSessions(sessionID).toPromise()
+      .then(
+        data => { this.session = data; },
+        err => console.log(err)
+      )
+      .then(
+        () => this.checkSession(this.session)
+      );
+  }
 
-    this.getsessionservice.getSessions(sessionID).subscribe(
-      data => {this.session = data; },
-      err => console.log(err)
-    );
-    if (this.session.session_state.running !== true) {
+  public checkSession(session: Session) {
+    if (session === null) {
+      console.log('Session is null');
+    } else {
+    if (session.session_state !== true) {
       console.log('Session is NOT active');
     } else {
-            if (this.session.player_ids === null) {
+            if (session.player_ids === null) {
               console.log('The session does not exist');
-            } else if (this.session.player_ids.length === 0){
+            } else if (session.player_ids.length === 0) {
               console.log('There are no players in the current session');
             } else {
-                // tslint:disable-next-line:prefer-const
-                for (let userID of this.session.player_ids) {
+                for (const userID of session.player_ids) {
                   if (userID === this.user.identifier) {
                     console.log('Player found in session');
                     localStorage.setItem('activeSession', JSON.stringify(this.session));
@@ -122,5 +117,6 @@ export class DisplaySessionsComponent implements OnInit {
                 }
               }
           }
+      }
   }
 }

@@ -32,6 +32,7 @@ export class DMToolbarComponent implements OnInit {
   public logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('activeSession');
+    localStorage.removeItem('grabSession');
     this.currentUser = null;
   }
 

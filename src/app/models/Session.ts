@@ -1,10 +1,6 @@
-export interface SessionState {
-  running: boolean;
-}
-
 export interface Session {
     identifier: string;
-    session_state: SessionState;
+    session_state: boolean;
     created_on: Date;
     last_modified_on: Date;
     dm_id: string;

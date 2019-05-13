@@ -55,7 +55,7 @@ export class CreateSessionComponent implements OnInit {
     this.newSession.dm_id = this.user.identifier;
     this.http.post<Session>(this.link, this.newSession, httpOptions)
       .subscribe(data => {
-        if ( this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0 ) {
+        if ( this.user.dm_session_ids === null || this.user.dm_session_ids.length === 0 ) {
           this.user.dm_session_ids = [data.identifier];
         } else {
         this.user.dm_session_ids.push(data.identifier);
