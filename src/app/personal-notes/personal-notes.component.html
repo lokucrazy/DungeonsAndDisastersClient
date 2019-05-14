@@ -1,3 +1,14 @@
-<p>
-  You clicked the Personal Notes Button!
-</p>
+
+<mat-label>New Note</mat-label>
+<mat-form-field floatlabel="never" style="width:100%; height:30%;">
+  <textarea matInput #tArea></textarea>
+</mat-form-field>
+<button type="button" mat-raised-button color="accent" (click)="save(tArea.value)" routerLink = "/personal-notes">Save Note</button>
+
+<div>
+  <mat-card *ngFor="let note of notes" style="margin: 5px;">
+    {{note}}
+  </mat-card>
+</div>
+
+

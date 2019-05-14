@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: dist/DungeonsAndDisasters/
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: bashScripts/beforeInstall.sh
+      timeout: 300
+      runas: root
