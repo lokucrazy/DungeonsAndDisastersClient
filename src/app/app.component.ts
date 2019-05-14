@@ -17,8 +17,6 @@ import { userInfo } from 'os';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { MESSAGES_CONTAINER_ID } from '@angular/cdk/a11y';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,7 +26,7 @@ export class AppComponent implements OnInit {
   title = 'DungeonsAndDisasters';
   currentUser: User;
 
-  constructor(private loginService: LoginService) {}
+  constructor() {}
 
   ngOnInit() {
     console.log('Give up.');

@@ -11,10 +11,9 @@ export class BottomsheetComponent {
   constructor(private bottomSheet: MatBottomSheet) { }
 
   openBottomSheet(): void {
+// tslint:disable-next-line: no-use-before-declare
     this.bottomSheet.open(BottomSheetBoxComponent);
   }
-
-
 }
 
 @Component({

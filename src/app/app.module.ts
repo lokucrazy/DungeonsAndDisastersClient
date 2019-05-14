@@ -20,7 +20,7 @@ import { LookupService } from './services/lookup.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { DmlookupComponent } from './dmlookup/dmlookup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgControl } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { LoginService } from './services/login.service';
 import { FetchUserInfoComponent, FetchUserInfoSnackComponent } from './fetch-user-info/fetch-user-info.component';
@@ -35,7 +35,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { ChatComponent } from './chat/chat.component';
 import { MatDatepickerModule,  } from '@angular/material/datepicker';
-import { MatNativeDateModule } from  '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
+import { JoinComponent } from './join/join.component';
+import { CreateCharacterComponent } from './create-character/create-character.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -57,8 +62,10 @@ import { MatNativeDateModule } from  '@angular/material';
     BottomSheetBoxComponent,
     DisplaySessionsComponent,
     CreateSessionComponent,
+    ChatComponent,
+    JoinComponent,
+    CreateCharacterComponent
     ChatComponent
-
   ],
   imports: [
     BrowserModule,
@@ -80,15 +87,15 @@ import { MatNativeDateModule } from  '@angular/material';
     MatDividerModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [
     LookupService,
     LoginService,
     GetuserService,
-    MatDatepickerModule
-
+    MatDatepickerModule,
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginDialogComponent, FetchUserInfoSnackComponent, BottomSheetBoxComponent]

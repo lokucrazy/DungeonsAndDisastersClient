@@ -1,14 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDatepicker } from '@angular/material';
-import { AppComponent } from '../app.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CreateuserService } from '../services/createuser.service';
 import { User } from '../models/User';
 import { LoginService } from '../services/login.service';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
-
-
-
+import { GetuserService } from '../services/getuser.service';
+import { Session } from '../models/Session';
 
 export interface DialogData {
   username: string;
@@ -24,27 +20,42 @@ export interface DialogData {
 export class DMToolbarComponent implements OnInit {
 
   currentUser: User;
+  currentSession: Session;
+  dmFlag: boolean;
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+      private getUserService: GetuserService
+    ) {}
 
   ngOnInit() {
-    this.getDropDownInfo();
-
+    this.currentUser = this.getUserService.getUser();
+    this.currentSession = JSON.parse(localStorage.getItem('activeSession'));
   }
 
+  refresh() {
+    this.currentUser = this.getUserService.getUser();
+    this.currentSession = JSON.parse(localStorage.getItem('activeSession'));
+    this.ifDM();
+  }
 
-  public getDropDownInfo(): void {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  ifDM() {
+    if (!this.currentSession || !this.currentUser){
+      this.dmFlag = false;
+    } else if(this.currentSession.dm_id != this.currentUser.identifier){
+      this.dmFlag = false;
+    } else{
+      this.dmFlag = true;
+    }
   }
 
 
   public logout(): void {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('activeSession');
+    localStorage.removeItem('grabSession');
     this.currentUser = null;
   }
 }
-
-
 
 @Component({
   selector: 'app-login',
@@ -58,6 +69,7 @@ export class LoginComponent {
   constructor(public dialog: MatDialog) {}
 
   public openDialog(): void {
+// tslint:disable-next-line: no-use-before-declare
       const dialogRef = this.dialog.open(LoginDialogComponent, {
           width: '500px',
           data: {username: this.username, password: this.password, birthday: this.birthday}
@@ -80,12 +92,14 @@ export class LoginDialogComponent {
   login: boolean;
 
   birfday: Date = new Date();
+  currentUser: User;
 
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
       private createuserService: CreateuserService,
       private loginService: LoginService,
+      private getUserService: GetuserService,
       @Inject(MAT_DIALOG_DATA) public data: DialogData) {
         this.newUser = {
           identifier: null,
@@ -99,8 +113,7 @@ export class LoginDialogComponent {
           session_ids: null,
           dm_session_ids: null,
           npc_ids: null
-        }
-
+        };
       }
 
       public onNoClick(): void {
@@ -119,6 +132,7 @@ export class LoginDialogComponent {
 
           err => console.log(err)
         );
+        this.currentUser = this.getUserService.getUser();
         this.dialogRef.close();
       }
 
@@ -130,6 +144,7 @@ export class LoginDialogComponent {
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
           err => console.log(err)
         );
+        this.currentUser = this.getUserService.getUser();
         this.dialogRef.close();
       }
 
