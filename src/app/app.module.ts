@@ -64,7 +64,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateSessionComponent,
     ChatComponent,
     JoinComponent,
-    CreateCharacterComponent
+    CreateCharacterComponent,
     ChatComponent
   ],
   imports: [
