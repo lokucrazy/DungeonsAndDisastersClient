@@ -48,6 +48,7 @@ export class DMToolbarComponent implements OnInit {
     }
   }
 
+
   public logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('activeSession');
@@ -89,8 +90,10 @@ export class LoginDialogComponent {
 
   newUser: User;
   login: boolean;
+
   birfday: Date = new Date();
   currentUser: User;
+
 
   constructor(
       public dialogRef: MatDialogRef<LoginComponent>,
@@ -117,6 +120,7 @@ export class LoginDialogComponent {
           this.dialogRef.close();
       }
 
+
       public submit(username, password): void {
         this.newUser.birthdate = new Date();
         this.newUser.username = username;
@@ -125,6 +129,7 @@ export class LoginDialogComponent {
         console.log(username, password, this.newUser.birthdate);
         this.createuserService.createUser(this.newUser).subscribe(
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
+
           err => console.log(err)
         );
         this.currentUser = this.getUserService.getUser();
@@ -134,6 +139,7 @@ export class LoginDialogComponent {
       public loginsubmit(username, password): void {
         this.newUser.username = username;
         this.newUser.password = password;
+
         this.loginService.loginrequest(this.newUser).subscribe(
           data => localStorage.setItem('currentUser', JSON.stringify(data)),
           err => console.log(err)
@@ -141,4 +147,5 @@ export class LoginDialogComponent {
         this.currentUser = this.getUserService.getUser();
         this.dialogRef.close();
       }
+
 }

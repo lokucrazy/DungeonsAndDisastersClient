@@ -17,17 +17,29 @@
 
         <!-- Button for the Chat. Opens up the log and has a Send and Close button.
              The Chat button is fixed on the bottom right of the screen so it moves along with the rest of the browser for easier navigation-->
-        <!-- <button class="open-button" (click)="openForm()">Chat</button>
+         <button class="open-button" (click)="openForm()">Chat</button>
+
 
         <div class="chat-popup" id="myForm">
-        <form action="" class="form-container">
-            <h1>Chat</h1>
 
-            <textarea placeholder="Type message.." name="msg" required></textarea>
+            <form class="form-container">
+                <h1>Chat</h1>
 
-            <button type="submit" class="btn">Send</button>
-            <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
-        </form>
-        </div> -->
-
+                <br>
+            <div>
+                <ul>
+                    <!-- <li id="chat-show" *ngFor="let message of messages">
+                    </li> -->
+                    <li id="chat-show">
+                    </li>
+                    <!-- <li id="chat-show">{{message.value}}
+                    </li> -->
+                </ul>
+            </div>
+                <br><br>
+                <input type="text" id="chat" #message>
+                <button type="submit" class="btn" (click)="sendMsg(message.value)">Send</button>
+                <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+            </form>
+          </div>
     </mat-drawer-container>

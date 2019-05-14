@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../models/Session';
-import { User } from '../models/user';
+import { User } from '../models/User';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetuserService } from '../services/getuser.service';
 
@@ -19,12 +19,14 @@ export class CreateSessionComponent implements OnInit {
   selection: string;
   choices: string[] = ['New Game', 'New Session'];
   newSession: Session;
+
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
   request: string;
   newgameID: string;
   newsessionID: string;
   newID: string;
   DMID: string;
+
 
   constructor(private getuserservice: GetuserService,
               private http: HttpClient ) {
@@ -50,6 +52,7 @@ export class CreateSessionComponent implements OnInit {
     this.user = this.getuserservice.getUser();
   }
 
+
   public newGameRequest() {
     this.newSession.dm_id = this.user.identifier;
     this.http.post<Session>(this.link, this.newSession, httpOptions)
@@ -60,12 +63,14 @@ export class CreateSessionComponent implements OnInit {
         this.user.dm_session_ids.push(data.identifier);
         }
         localStorage.setItem('currentUser', JSON.stringify(this.user));
+
         this.newID = data.identifier;
         return data.identifier;
       },
       err => console.log(err)
       );
   }
+
 
   public newSessionRequest(sessionID: string) {
     this.newSession.dm_id = this.user.identifier;
@@ -78,6 +83,7 @@ export class CreateSessionComponent implements OnInit {
       this.user.dm_session_ids.push(data.identifier);
       }
       localStorage.setItem('currentUser', JSON.stringify(this.user));
+
       this.newID = data.identifier;
       return data.identifier;
     },

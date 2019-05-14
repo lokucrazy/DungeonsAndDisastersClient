@@ -11,7 +11,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class GetsessionsService {
-
   request: string;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
 
