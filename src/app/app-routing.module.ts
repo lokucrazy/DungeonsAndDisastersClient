@@ -9,7 +9,7 @@ import { DisplaySessionsComponent } from './display-sessions/display-sessions.co
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { ChatComponent } from './chat/chat.component';
 import { JoinComponent } from './join/join.component';
-import { AppComponent } from './app.component';
+import { CreateCharacterComponent } from './create-character/create-character.component';
 
 
 const routes: Routes = [
@@ -22,6 +22,7 @@ const routes: Routes = [
   {path: 'create-session', component: CreateSessionComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'join', component: JoinComponent},
+  {path: 'create-character', component: CreateCharacterComponent}
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@ import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetsessionsService } from '../services/getsessions.service';
 import { Session } from '../models/Session';
-import { SessionState } from '../models/SessionState';
+import { State } from '../models/State';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,7 +30,7 @@ export class DisplaySessionsComponent implements OnInit {
   DMsessions: Session[] = [];
   session: Session = null;
   link = 'http://ec2-3-93-4-109.compute-1.amazonaws.com/api/v1/sessions/';
-  activeStatus: SessionState = { running : undefined};
+  activeStatus: State = { running : undefined};
   turbolink: string;
   currentSession: Session;
   asyncResult: any;

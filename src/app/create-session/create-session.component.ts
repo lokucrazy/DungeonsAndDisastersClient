@@ -3,7 +3,6 @@ import { Session } from '../models/Session';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetuserService } from '../services/getuser.service';
-import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

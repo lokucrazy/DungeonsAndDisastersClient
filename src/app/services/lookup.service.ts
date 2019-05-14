@@ -1,14 +1,11 @@
-import {Injectable, Input} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable , of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Weapon } from '../models/Weapon';
 import { Spell } from '../models/Spell';
 import { Armor } from '../models/Armor';
 import { Race } from '../models/Race';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable()
 export class LookupService {

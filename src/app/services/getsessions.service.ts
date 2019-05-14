@@ -22,5 +22,4 @@ export class GetsessionsService {
     this.request = this.link.concat(sessionid);
     return this.http.get<Session>(this.request, httpOptions);
   }
-
 }

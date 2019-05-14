@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDatepicker } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CreateuserService } from '../services/createuser.service';
 import { User } from '../models/User';
 import { LoginService } from '../services/login.service';
 import { GetuserService } from '../services/getuser.service';
+import { Session } from '../models/Session';
 
 export interface DialogData {
   username: string;
@@ -19,14 +20,32 @@ export interface DialogData {
 export class DMToolbarComponent implements OnInit {
 
   currentUser: User;
+  currentSession: Session;
+  dmFlag: boolean;
 
   constructor(
-      private loginService: LoginService,
       private getUserService: GetuserService
     ) {}
 
   ngOnInit() {
     this.currentUser = this.getUserService.getUser();
+    this.currentSession = JSON.parse(localStorage.getItem('activeSession'));
+  }
+
+  refresh() {
+    this.currentUser = this.getUserService.getUser();
+    this.currentSession = JSON.parse(localStorage.getItem('activeSession'));
+    this.ifDM();
+  }
+
+  ifDM() {
+    if (!this.currentSession || !this.currentUser){
+      this.dmFlag = false;
+    } else if(this.currentSession.dm_id != this.currentUser.identifier){
+      this.dmFlag = false;
+    } else{
+      this.dmFlag = true;
+    }
   }
 
   public logout(): void {
@@ -35,13 +54,7 @@ export class DMToolbarComponent implements OnInit {
     localStorage.removeItem('grabSession');
     this.currentUser = null;
   }
-
-  public refresh(): void {
-    this.currentUser = this.getUserService.getUser();
-  }
 }
-
-
 
 @Component({
   selector: 'app-login',
