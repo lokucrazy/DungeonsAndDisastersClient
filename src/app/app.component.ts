@@ -26,7 +26,9 @@ export class AppComponent implements OnInit {
   title = 'DungeonsAndDisasters';
   currentUser: User;
 
+
   constructor() {}
+
 
   ngOnInit() {
     console.log('Give up.');
@@ -46,8 +48,8 @@ export class AppComponent implements OnInit {
     console.log(message);
     this.messages[this.i] = message;
     console.log(this.messages[this.i]);
-    console.log(this.currentUser)
-    document.getElementById("chat-show").insertAdjacentText("beforebegin", this.currentUser + ":" + this.messages[this.i]);
+    console.log(this.currentUser.username)
+    document.getElementById("chat-show").insertAdjacentText("beforebegin", this.messages[this.i]);
     document.getElementById("chat-show").insertAdjacentHTML("beforebegin", "<div></div>");
     this.i++;
   }
