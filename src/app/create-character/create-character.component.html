@@ -1,0 +1,96 @@
+<mat-horizontal-stepper #stepper>
+  <mat-step [stepControl]="basicInfoGroup">
+    <form [formGroup]="basicInfoGroup">
+      <ng-template matStepLabel>Basic Character Info</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Character Name" formControlName="nameCtrl" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Class</mat-label>
+        <mat-select [(value)]="selectedClass">
+          <mat-option *ngFor="let class of classes" [value] = "class.value"  required>
+            {{class.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput formControlName="backgroundCtrl" placeholder="Background" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Race</mat-label>
+        <mat-select [(value)]="selectedRace">
+          <mat-option *ngFor="let race of races" [value] = "race.value"  required>
+            {{race.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Alignment</mat-label>
+        <mat-select [(value)]="selectedAlignment">
+          <mat-option *ngFor="let alignment of alignments" [value] = "alignment.value"  required>
+            {{alignment.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <input matInput type="number" formControlName="lvlCtrl" placeholder="Level" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="xpCtrl" placeholder="Experience Points">
+      </mat-form-field><br>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="abilityGroup">
+    <form [formGroup]="abilityGroup">
+      <ng-template matStepLabel>Ability Scores</ng-template>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="abilityCtrl" placeholder="Strength" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="abilityCtrl" placeholder="Dexterity" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="abilityCtrl" placeholder="Constitution" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="abilityCtrl" placeholder="Intelligence" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="abilityCtrl" placeholder="Wisdom" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+          <input matInput type="number" formControlName="abilityCtrl" placeholder="Charisma" required>
+      </mat-form-field><br>
+
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+    </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    All Done!
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

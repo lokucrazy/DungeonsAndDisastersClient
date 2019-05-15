@@ -1,4 +1,4 @@
-<label>Creating a new session for an existing game? Or creating a new game?</label><br><br>
+<h1 class="mat-h3">Creating a new session for an existing game? Or creating a new game?</h1><br><br>
 <mat-radio-group [(ngModel)]="selection">
   <mat-radio-button *ngFor="let choice of choices" [value]="choice" style="margin:5px;">{{choice}}</mat-radio-button>
 </mat-radio-group>
@@ -16,6 +16,7 @@
     <button mat-raised-button color="accent" (click)="newSessionRequest(newsessionIDfield.value)">New Session</button>
 
 </div>
-<div *ngIf="newID">
+<br>
+<div *ngIf="newID" class="mat-h5">
   New Session Created! ID: {{newID}}
 </div>
