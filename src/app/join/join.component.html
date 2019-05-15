@@ -1,0 +1,6 @@
+<h1 class="mat-h1">Input Session ID to connect as a player :</h1>
+<br>
+<mat-form-field style="width: 100%">
+  <input matInput type="text" placeholder="Session ID" #sessionID>
+</mat-form-field>
+<button mat-raised-button color="accent" (click)="connectToSession(sessionID.value)">Connect</button>

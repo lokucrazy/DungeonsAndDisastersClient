@@ -3,7 +3,6 @@ import { Session } from '../models/Session';
 import { User } from '../models/User';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetuserService } from '../services/getuser.service';
-import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,9 +32,9 @@ export class CreateSessionComponent implements OnInit {
               private http: HttpClient ) {
                 this.newSession = {
                   identifier: null,
-                  session_state: false,
-                  created_at: null,
-                  modified_at: null,
+                  session_state: null,
+                  created_on: null,
+                  last_modified_on: null,
                   dm_id: null,
                   non_combat_log: null,
                   combat_log: null,
@@ -58,7 +57,7 @@ export class CreateSessionComponent implements OnInit {
     this.newSession.dm_id = this.user.identifier;
     this.http.post<Session>(this.link, this.newSession, httpOptions)
       .subscribe(data => {
-        if ( this.user.dm_session_ids === undefined || this.user.dm_session_ids.length === 0 ) {
+        if ( this.user.dm_session_ids === null || this.user.dm_session_ids.length === 0 ) {
           this.user.dm_session_ids = [data.identifier];
         } else {
         this.user.dm_session_ids.push(data.identifier);

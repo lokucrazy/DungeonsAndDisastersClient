@@ -8,7 +8,8 @@ import { LogComponent } from './log/log.component';
 import { DisplaySessionsComponent } from './display-sessions/display-sessions.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { ChatComponent } from './chat/chat.component';
-import { AppComponent } from './app.component';
+import { JoinComponent } from './join/join.component';
+import { CreateCharacterComponent } from './create-character/create-character.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'display-sessions', component: DisplaySessionsComponent},
   {path: 'create-session', component: CreateSessionComponent},
   {path: 'chat', component: ChatComponent},
-
+  {path: 'join', component: JoinComponent},
+  {path: 'create-character', component: CreateCharacterComponent}
 ];
 
 @NgModule({
